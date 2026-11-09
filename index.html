@@ -6,115 +6,199 @@
   <title>OG AI Director Pro • Studio Orkestrasi AI Video</title>
   <meta name="theme-color" content="#06b6d4" />
 
-  <!-- Fonts Google -->
+  <!-- Google Fonts & Tailwind CSS CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- React 18 & Babel via CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
-    body { background-color: #070b14; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body {
+      background-color: #070b14;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #164e63; border-radius: 9999px; }
+    .glow-cyan { box-shadow: 0 0 25px rgba(6, 182, 212, 0.25); }
   </style>
 </head>
-<body class="bg-[#070b14] text-slate-100 antialiased selection:bg-cyan-500/30">
-  <div id="root"></div>
+<body class="bg-[#070b14] text-slate-100 antialiased selection:bg-cyan-500/30 min-h-screen">
 
-  <!-- Kode React Utama OG AI Director Pro -->
-  <script type="text/babel" data-presets="react">
-    const { useState } = React;
-    const TECH_GRID_SVG = `data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M60 0 L0 0 0 60' fill='none' stroke='rgba(6,182,212,0.04)' stroke-width='1'/%3E%3Ccircle cx='60' cy='0' r='1' fill='rgba(245,158,11,0.1)'/%3E%3Ccircle cx='0' cy='60' r='1' fill='rgba(6,182,212,0.1)'/%3E%3C/svg%3E`;
+  <!-- ==================== HALAMAN PEMBUKA / SPLASH SCREEN ==================== -->
+  <div id="splashScreen" class="flex flex-col items-center justify-center min-h-screen w-full px-4 relative overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    function App() {
-      const [hasEntered, setHasEntered] = useState(false);
-      const [activeTab, setActiveTab] = useState('home');
+    <div class="relative text-center space-y-6 max-w-xl w-full p-8 sm:p-12 rounded-3xl bg-[#0a0f1d]/90 border border-cyan-800/50 shadow-2xl backdrop-blur-xl">
+      <div class="inline-flex p-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-400 text-slate-900 shadow-xl shadow-cyan-500/30 text-3xl font-black">
+        🎬
+      </div>
 
-      const TABS = [
-        { id: 'home', icon: '✨', title: 'Workspace Home', subtitle: 'Pusat Studio' },
-        { id: 'sheets', icon: '👥', title: 'Character Sheet Studio', subtitle: 'Consistency 100%' },
-        { id: 'imagegen', icon: '📸', title: 'Image Studio', subtitle: 'First Frame & Visuals' },
-        { id: 'affiliate', icon: '📢', title: 'Affiliate Prompt', subtitle: 'Sales Conversion' },
-        { id: 'influencer', icon: '👤', title: 'AI Influencer', subtitle: 'Virtual Talent Creator' },
-        { id: 'general', icon: '🎬', title: 'General Prompt', subtitle: 'Film & Sinematik' },
-        { id: 'storyboard', icon: '📑', title: 'Storyboard Grid', subtitle: 'Composite Document' },
-        { id: 'pipeline', icon: '🚀', title: 'AI Generator', subtitle: 'Jalur Produksi Terpadu' },
-        { id: 'multichar', icon: '🎥', title: 'Generative AI (AI Gen)', subtitle: 'Spesial Dialog & Aksi' },
-      ];
+      <div class="space-y-2">
+        <span class="text-[11px] font-bold text-amber-400 tracking-widest uppercase px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
+          NEXT-GEN AI PRODUCTION ENVIRONMENT
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight pt-2">
+          OG AI <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">DIRECTOR PRO</span>
+        </h1>
+        <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed pt-1">
+          Studio orkestrasi konten dan sutradara video AI profesional. 100% Locked Consistency, Storyboard Grid, dan Google Flow Ready.
+        </p>
+      </div>
 
-      if (!hasEntered) {
-        return (
-          <div className="flex flex-col items-center justify-center min-h-screen w-full bg-[#070b14] px-4" style={{ backgroundImage: `url("${TECH_GRID_SVG}")`, backgroundSize: '60px' }}>
-            <div className="relative text-center space-y-6 max-w-xl w-full p-8 rounded-3xl bg-[#0a0f1d]/90 border border-cyan-800/40 backdrop-blur-xl shadow-2xl">
-              <div className="text-4xl">🎬</div>
-              <h1 className="text-3xl sm:text-4xl font-black text-white">
-                OG AI <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">DIRECTOR PRO</span>
-              </h1>
-              <p className="text-gray-400 text-xs sm:text-sm">Studio orkestrasi konten dan sutradara video AI profesional. 100% Locked Consistency & Google Flow Ready.</p>
-              <button onClick={() => setHasEntered(true)} className="px-8 py-3.5 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 text-[#050b14] font-black text-sm rounded-xl shadow-lg hover:scale-105 transition-all cursor-pointer">
-                MASUK KE STUDIO SUTRADARA ➔
-              </button>
+      <div class="pt-4">
+        <button 
+          onclick="masukStudio()"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 hover:from-cyan-400 hover:to-teal-300 text-slate-950 font-black text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
+        >
+          MASUK KE STUDIO SUTRADARA ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HALAMAN UTAMA DASHBOARD STUDIO ==================== -->
+  <div id="mainStudio" class="hidden flex h-screen w-full overflow-hidden bg-[#070b14]">
+    
+    <!-- SIDEBAR NAVIGASI -->
+    <aside class="w-64 bg-[#0a0f1d] border-r border-cyan-950 flex flex-col shrink-0">
+      <div class="p-5 border-b border-cyan-950 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-400 flex items-center justify-center text-slate-900 font-bold text-xl shadow-md shadow-cyan-500/20">
+          🎬
+        </div>
+        <div>
+          <div class="font-black text-sm text-white">OG AI DIRECTOR</div>
+          <div class="text-[10px] text-cyan-400 font-mono font-bold tracking-wider">PRO LIFETIME</div>
+        </div>
+      </div>
+
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1.5 custom-scrollbar">
+        <button onclick="pilihModul('home')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30">
+          <span>✨</span> <span>Workspace Home</span>
+        </button>
+        <button onclick="pilihModul('sheets')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>👥</span> <span>Character Sheet Studio</span>
+        </button>
+        <button onclick="pilihModul('imagegen')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>📸</span> <span>Image Studio (First Frame)</span>
+        </button>
+        <button onclick="pilihModul('affiliate')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>📢</span> <span>Affiliate Prompt</span>
+        </button>
+        <button onclick="pilihModul('influencer')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>👤</span> <span>AI Influencer Vault</span>
+        </button>
+        <button onclick="pilihModul('general')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>🎬</span> <span>General Prompt Sinematik</span>
+        </button>
+        <button onclick="pilihModul('storyboard')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>📑</span> <span>Storyboard Grid</span>
+        </button>
+        <button onclick="pilihModul('pipeline')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>🚀</span> <span>AI Generator (Master)</span>
+        </button>
+        <button onclick="pilihModul('multichar')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
+          <span>🎥</span> <span>Generative AI Multi-Char</span>
+        </button>
+      </nav>
+
+      <div class="p-4 border-t border-cyan-950 text-center">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
+          🟢 Auto-Connect Active
+        </span>
+      </div>
+    </aside>
+
+    <!-- KONTEN UTAMA -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+      <!-- HEADER -->
+      <header class="h-16 px-8 border-b border-cyan-950 bg-[#0a0f1d]/80 backdrop-blur-md flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <h2 id="judulModul" class="text-base font-black text-white">Workspace Home</h2>
+          <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold font-mono">
+            STUDIO VERSI LIVE
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400">Lisensi: <strong class="text-amber-400">Pro Lifetime Member</strong></span>
+          <button onclick="kembaliSplash()" class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/30 hover:bg-rose-500/20">
+            Keluar
+          </button>
+        </div>
+      </header>
+
+      <!-- ISI KONTEN (SCROLLABLE) -->
+      <div class="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+        <div class="max-w-5xl mx-auto space-y-6">
+
+          <!-- BANNER HERO -->
+          <div class="p-8 rounded-3xl bg-gradient-to-r from-cyan-950/60 via-[#0d1627] to-amber-950/30 border border-cyan-800/40 relative overflow-hidden">
+            <span class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 inline-block mb-3">
+              🔥 STATUS SISTEM: AKTIF & SIAP GENERATE
+            </span>
+            <h3 class="text-2xl font-black text-white">Selamat Datang di Studio OG AI Director Pro</h3>
+            <p class="text-xs md:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
+              Website ini sudah aktif 100% online di Vercel. Anda dapat mulai memilih modul di sidebar sebelah kiri atau tombol cepat di bawah untuk membuat naskah, merancang karakter konsisten, dan mengekspor prompt siap render ke Kling AI atau Google Flow.
+            </p>
+          </div>
+
+          <!-- KARTU FITUR CEPAT -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
+              <div class="text-2xl">👥</div>
+              <h4 class="font-bold text-white text-sm">Character Sheet</h4>
+              <p class="text-[11px] text-gray-400">Kunci konsistensi pakaian dan wajah 100% berlatar putih bersih.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
+              <div class="text-2xl">📢</div>
+              <h4 class="font-bold text-white text-sm">Affiliate Prompt</h4>
+              <p class="text-[11px] text-gray-400">Susun naskah promosi produk dan UGC berdurasi 10 detik per shot.</p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
+              <div class="text-2xl">📑</div>
+              <h4 class="font-bold text-white text-sm">Storyboard Grid</h4>
+              <p class="text-[11px] text-gray-400">Rakit naskah dialog dan visual adegan ke lembar storyboard utuh.</p>
             </div>
           </div>
-        );
-      }
 
-      return (
-        <div className="flex h-screen w-full bg-[#070b14] text-gray-100 overflow-hidden" style={{ backgroundImage: `url("${TECH_GRID_SVG}")`, backgroundSize: '60px' }}>
-          <aside className="w-64 bg-[#0a0f1d]/95 border-r border-cyan-950 flex flex-col">
-            <div className="p-5 border-b border-cyan-950 flex items-center gap-3">
-              <div className="text-xl">🎬</div>
-              <div>
-                <div className="font-black text-sm text-white">OG AI DIRECTOR</div>
-                <div className="text-[10px] text-cyan-400 font-mono">PRO LIFETIME</div>
-              </div>
-            </div>
-            <nav className="flex-1 overflow-y-auto p-3 space-y-1 custom-scrollbar">
-              {TABS.map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex items-center gap-3 px-3 py-2.5 rounded-xl w-full text-left text-xs font-bold transition-all cursor-pointer ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' : 'text-gray-400 hover:text-white'}`}>
-                  <span>{tab.icon}</span>
-                  <span>{tab.title}</span>
-                </button>
-              ))}
-            </nav>
-          </aside>
-
-          <main className="flex-1 flex flex-col h-full overflow-hidden">
-            <header className="h-16 px-6 border-b border-cyan-950/80 bg-[#0a0f1d]/60 flex items-center justify-between">
-              <h2 className="text-base font-black text-white">{TABS.find(t => t.id === activeTab)?.title}</h2>
-              <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">🟢 Live di Vercel</span>
-            </header>
-            <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
-              <div className="p-6 rounded-3xl bg-cyan-950/30 border border-cyan-800/40 space-y-3">
-                <h3 className="text-lg font-black text-white">Selamat Datang di Studio Sutradara</h3>
-                <p className="text-xs text-gray-300">Website Anda sudah berhasil online secara resmi di Vercel dan siap dipakai siapa saja!</p>
-              </div>
-            </div>
-          </main>
         </div>
-      );
+      </div>
+    </main>
+
+  </div>
+
+  <!-- SCRIPT INTERAKSI LANGSUNG -->
+  <script>
+    function masukStudio() {
+      document.getElementById('splashScreen').classList.add('hidden');
+      document.getElementById('mainStudio').classList.remove('hidden');
     }
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    function kembaliSplash() {
+      document.getElementById('mainStudio').classList.add('hidden');
+      document.getElementById('splashScreen').classList.remove('hidden');
+    }
+
+    function pilihModul(id) {
+      const titles = {
+        'home': 'Workspace Home',
+        'sheets': 'Character Sheet Studio (Konsistensi 100%)',
+        'imagegen': 'Image Studio (First Frame & Visuals)',
+        'affiliate': 'Affiliate Prompt (Sales Conversion)',
+        'influencer': 'AI Influencer Vault (Virtual Talent)',
+        'general': 'General Prompt (Breakdown Film Sinematik)',
+        'storyboard': 'Storyboard Grid (Composite Document)',
+        'pipeline': 'AI Generator (Master Pipeline)',
+        'multichar': 'Generative AI Multi-Character Studio'
+      };
+      document.getElementById('judulModul').innerText = titles[id] || 'Studio Workspace';
+    }
   </script>
 </body>
 </html>
