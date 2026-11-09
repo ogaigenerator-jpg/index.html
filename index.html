@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OG AI Director Pro • Studio Orkestrasi AI Video & 11 Modul Panduan</title>
+  <title>OG AI Director Pro • Studio Orkestrasi AI Video & 11 Modul Visual Screencast</title>
   <meta name="theme-color" content="#06b6d4" />
 
   <!-- Tailwind CSS & Lucide Icons -->
@@ -26,13 +26,17 @@
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #164e63; border-radius: 9999px; }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #0891b2; }
     
-    @keyframes barBounce {
-      0%, 100% { height: 6px; }
-      50% { height: 28px; }
+    @keyframes cursorMove {
+      0% { transform: translate(15%, 70%); }
+      25% { transform: translate(30%, 35%); }
+      50% { transform: translate(65%, 40%); }
+      75% { transform: translate(80%, 25%); }
+      100% { transform: translate(15%, 70%); }
     }
-    .wave-active {
-      animation: barBounce 0.8s ease-in-out infinite;
-    }
+    .animate-cursor { animation: cursorMove 8s infinite ease-in-out; }
+    
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
+    .pulse-glow { animation: pulseGlow 2s infinite; }
   </style>
 </head>
 <body class="bg-[#070b14] text-slate-100 antialiased selection:bg-cyan-500/30 min-h-screen">
@@ -55,7 +59,7 @@
           OG AI <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">DIRECTOR PRO</span>
         </h1>
         <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed pt-1">
-          Studio orkestrasi konten dan sutradara video AI profesional. 11 modul terintegrasi dengan pemutar suara asli narator instruktur dan generator prompt instan.
+          Studio orkestrasi konten dan sutradara video AI profesional. 11 modul terintegrasi dengan pemutar screencast visual simulasi nyata, audio instruktur AI, dan koneksi instan ke Google Flow.
         </p>
       </div>
 
@@ -70,7 +74,7 @@
           onclick="masukKePanduan()"
           class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#0d172a] hover:bg-[#14233f] text-cyan-300 font-bold text-sm rounded-2xl border border-cyan-800/80 transition-all cursor-pointer"
         >
-          <i data-lucide="play-circle" class="w-4 h-4 text-amber-400"></i> Video Masterclass 11 Modul
+          <i data-lucide="play-circle" class="w-4 h-4 text-amber-400"></i> Video Screencast 11 Modul
         </button>
       </div>
     </div>
@@ -92,76 +96,53 @@
       </div>
 
       <nav class="flex-1 overflow-y-auto p-3 space-y-1 custom-scrollbar">
-        <!-- 0. HOME -->
         <button onclick="pilihModul('home')" id="btn-home" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 text-left">
           <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
           <div><div class="text-white">Workspace Home</div><div class="text-[9px] text-cyan-400/80 uppercase font-mono">Pusat Studio</div></div>
         </button>
-
-        <!-- 1. CHARACTER SHEET -->
         <button onclick="pilihModul('sheets')" id="btn-sheets" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
           <div><div>01. Character Sheet</div><div class="text-[9px] text-gray-500 uppercase font-mono">4 Sudut Konsisten 100%</div></div>
         </button>
-
-        <!-- 2. IMAGE STUDIO -->
         <button onclick="pilihModul('imagegen')" id="btn-imagegen" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="camera" class="w-4 h-4 text-teal-400"></i>
           <div><div>02. Image Studio</div><div class="text-[9px] text-gray-500 uppercase font-mono">First Frame Thumbnail</div></div>
         </button>
-
-        <!-- 3. AFFILIATE PROMPT -->
         <button onclick="pilihModul('affiliate')" id="btn-affiliate" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="megaphone" class="w-4 h-4 text-amber-400"></i>
           <div><div>03. Affiliate Prompt</div><div class="text-[9px] text-gray-500 uppercase font-mono">Sales & E-Commerce UGC</div></div>
         </button>
-
-        <!-- 4. AI INFLUENCER -->
         <button onclick="pilihModul('influencer')" id="btn-influencer" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="user" class="w-4 h-4 text-pink-400"></i>
           <div><div>04. AI Influencer Vault</div><div class="text-[9px] text-gray-500 uppercase font-mono">Virtual Talent Creator</div></div>
         </button>
-
-        <!-- 5. GENERAL PROMPT -->
         <button onclick="pilihModul('general')" id="btn-general" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="film" class="w-4 h-4 text-cyan-400"></i>
           <div><div>05. General Prompt</div><div class="text-[9px] text-gray-500 uppercase font-mono">Film & Sinematik</div></div>
         </button>
-
-        <!-- 6. STORYBOARD GRID -->
         <button onclick="pilihModul('storyboard')" id="btn-storyboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="layout-grid" class="w-4 h-4 text-indigo-400"></i>
           <div><div>06. Storyboard Grid</div><div class="text-[9px] text-gray-500 uppercase font-mono">Composite Document PNG</div></div>
         </button>
-
-        <!-- 7. AI GENERATOR -->
         <button onclick="pilihModul('pipeline')" id="btn-pipeline" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="route" class="w-4 h-4 text-emerald-400"></i>
           <div><div>07. AI Generator Master</div><div class="text-[9px] text-gray-500 uppercase font-mono">Riset 10 Ide Konten</div></div>
         </button>
-
-        <!-- 8. GENERATIVE AI MULTI-CHAR -->
         <button onclick="pilihModul('multichar')" id="btn-multichar" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="video" class="w-4 h-4 text-purple-400"></i>
           <div><div>08. Generative AI Gen</div><div class="text-[9px] text-gray-500 uppercase font-mono">Multi-Char Action & Dialog</div></div>
         </button>
-
-        <!-- 9. SEADANCE DANCE MOTION -->
         <button onclick="pilihModul('seadance')" id="btn-seadance" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
           <div><div>09. SeaDance Motion</div><div class="text-[9px] text-gray-500 uppercase font-mono">Tari Dinamis & Motion Transfer</div></div>
         </button>
-
-        <!-- 10. GOOGLE FLOW & EXTERNAL VIDEO -->
         <button onclick="pilihModul('flow')" id="btn-flow" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
           <i data-lucide="external-link" class="w-4 h-4 text-blue-400"></i>
           <div><div>10. Google Flow & Veo 2</div><div class="text-[9px] text-gray-500 uppercase font-mono">Ekspor Prompt Video Eksternal</div></div>
         </button>
-
-        <!-- 11. PUSAT VIDEO PANDUAN MASTERCLASS (NOW PLAYING) -->
         <button onclick="pilihModul('guide')" id="btn-guide" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-amber-300 bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-left">
           <i data-lucide="play-circle" class="w-4 h-4 text-amber-400 animate-pulse"></i>
-          <div><div class="flex items-center gap-1.5"><span>11. Video Panduan Master</span><span class="text-[8px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold font-mono">LIVE AUDIO</span></div><div class="text-[9px] text-amber-400/80 uppercase font-mono">Pemutar Suara Nyata & Script</div></div>
+          <div><div class="flex items-center gap-1.5"><span>11. Video Panduan Master</span><span class="text-[8px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold font-mono">VISUAL SCREEN</span></div><div class="text-[9px] text-amber-400/80 uppercase font-mono">Screencast Nyata & Narator</div></div>
         </button>
       </nav>
 
@@ -179,12 +160,12 @@
         <div class="flex items-center gap-3">
           <h2 id="judulModul" class="text-base font-black text-white">Workspace Home • Pusat Studio</h2>
           <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold font-mono">
-            SEMUA FITUR DIAKTIFKAN
+            11 MODUL AKTIF
           </span>
         </div>
         <div class="flex items-center gap-3">
           <span class="text-xs text-gray-400">Lisensi: <strong class="text-amber-400">Pro Lifetime Member</strong></span>
-          <button onclick="kembaliSplash()" class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/30 hover:bg-rose-500/20">
+          <button onclick="kembaliSplash()" class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/30 hover:bg-rose-500/20 cursor-pointer">
             Keluar
           </button>
         </div>
@@ -198,20 +179,20 @@
           <div id="view-home" class="modul-view space-y-6">
             <div class="p-8 rounded-3xl bg-gradient-to-r from-cyan-950/60 via-[#0d1627] to-amber-950/30 border border-cyan-800/40 relative overflow-hidden">
               <span class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 inline-block mb-3">
-                🔥 11 MODUL AKTIF + SUARA REAL-TIME NARATOR TUTORIAL
+                🔥 SISTEM SELESAI: 11 MODUL FITUR & PEMUTAR VIDEO VISUAL SCREENCAST NYATA
               </span>
               <h3 class="text-2xl font-black text-white">Studio Orkestrasi Konten & Sutradara AI Pro</h3>
               <p class="text-xs md:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
-                Seluruh 11 fitur telah aktif lengkap dengan pemutar tutorial interaktif bersuara asli narator, tombol salin prompt ke Kling AI & Google Veo 2, serta generator konsistensi karakter.
+                Platform kini dilengkapi pemutar video visual interaktif (bukan hanya audio)—menampilkan simulasi antarmuka software nyata, pergerakan kursor, kanvas karakter Maya Kirana, serta alur direct-export ke Google Flow.
               </p>
               <div class="mt-4 flex gap-3">
-                <button onclick="pilihModul('guide')" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg hover:scale-105 transition-all flex items-center gap-2">
-                  <i data-lucide="play-circle" class="w-4 h-4"></i> Buka Pemutar Video & Dengar Suara Narator
+                <button onclick="pilihModul('guide')" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg hover:scale-105 transition-all flex items-center gap-2 cursor-pointer">
+                  <i data-lucide="play-circle" class="w-4 h-4"></i> Tonton Screencast Visual Video 11 Modul
                 </button>
               </div>
             </div>
 
-            <!-- GRID 11 MODUL -->
+            <!-- GRID 11 MODUL CEPAT -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div onclick="pilihModul('sheets')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
                 <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="users"></i></div>
@@ -265,8 +246,8 @@
               </div>
               <div onclick="pilihModul('guide')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-amber-500/40 hover:border-amber-400 transition-all cursor-pointer space-y-2 group">
                 <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 w-fit"><i data-lucide="play-circle"></i></div>
-                <h4 class="font-bold text-white text-sm">11. Pusat Video Panduan</h4>
-                <p class="text-[11px] text-gray-400">Pemutar video 4K interaktif dengan narasi suara instruktur AI & phoneme.</p>
+                <h4 class="font-bold text-white text-sm">11. Video Panduan Screencast</h4>
+                <p class="text-[11px] text-gray-400">Simulasi visual interaktif antarmuka software nyata + suara instruktur.</p>
               </div>
             </div>
           </div>
@@ -281,11 +262,11 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="text-xs font-bold text-gray-300 uppercase block mb-1">Nama Karakter</label>
-                  <input type="text" id="csName" value="Maya Kirana" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100" />
+                  <input type="text" id="csName" value="Maya Kirana" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100 outline-none focus:border-cyan-400" />
                 </div>
                 <div>
                   <label class="text-xs font-bold text-gray-300 uppercase block mb-1">Gaya Visual</label>
-                  <select id="csStyle" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100">
+                  <select id="csStyle" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100 outline-none">
                     <option>Photorealistic Cinema (Sony FX3 35mm)</option>
                     <option>High-End Fashion Editorial Look</option>
                   </select>
@@ -310,28 +291,28 @@
                   <div class="aspect-square bg-slate-900 rounded-xl flex items-center justify-center p-2 border border-cyan-900/40">
                     <span class="text-5xl">👩‍💼</span>
                   </div>
-                  <button onclick="salinTeksCustom('Portrait Sheet Maya Kirana [100% Face & Wardrobe Locked #FFFFFF]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900">Salin Prompt</button>
+                  <button onclick="salinTeksCustom('Portrait Sheet Maya Kirana [100% Face & Wardrobe Locked #FFFFFF]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900 cursor-pointer">Salin Prompt</button>
                 </div>
                 <div class="p-4 rounded-2xl bg-[#060a14] border border-cyan-950 space-y-2 text-center">
                   <span class="text-xs font-bold text-teal-400 block">2. Close-Up Wajah</span>
                   <div class="aspect-square bg-slate-900 rounded-xl flex items-center justify-center p-2 border border-cyan-900/40">
                     <span class="text-5xl">🔍</span>
                   </div>
-                  <button onclick="salinTeksCustom('Close-up Facial Focus of Maya Kirana [100% Skin Texture Sync #FFFFFF]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900">Salin Prompt</button>
+                  <button onclick="salinTeksCustom('Close-up Facial Focus of Maya Kirana [100% Skin Texture Sync #FFFFFF]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900 cursor-pointer">Salin Prompt</button>
                 </div>
                 <div class="p-4 rounded-2xl bg-[#060a14] border border-cyan-950 space-y-2 text-center">
                   <span class="text-xs font-bold text-cyan-400 block">3. Full Body Sheet</span>
                   <div class="aspect-square bg-slate-900 rounded-xl flex items-center justify-center p-2 border border-cyan-900/40">
                     <span class="text-5xl">🧍‍♀️</span>
                   </div>
-                  <button onclick="salinTeksCustom('Full standing pose character design sheet Maya Kirana in tactical outfit [#FFFFFF background]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900">Salin Prompt</button>
+                  <button onclick="salinTeksCustom('Full standing pose character design sheet Maya Kirana in tactical outfit [#FFFFFF background]')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900 cursor-pointer">Salin Prompt</button>
                 </div>
                 <div class="p-4 rounded-2xl bg-[#060a14] border border-cyan-950 space-y-2 text-center">
                   <span class="text-xs font-bold text-emerald-400 block">4. Turnaround Multi-View</span>
                   <div class="aspect-square bg-slate-900 rounded-xl flex items-center justify-center p-2 border border-cyan-900/40">
                     <span class="text-5xl">🔄</span>
                   </div>
-                  <button onclick="salinTeksCustom('4 distinct angles side by side turnaround model sheet Maya Kirana on pure solid white background')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900">Salin Prompt</button>
+                  <button onclick="salinTeksCustom('4 distinct angles side by side turnaround model sheet Maya Kirana on pure solid white background')" class="w-full py-1.5 bg-[#0a0f1d] hover:bg-cyan-950 text-cyan-300 text-xs rounded border border-cyan-900 cursor-pointer">Salin Prompt</button>
                 </div>
               </div>
             </div>
@@ -347,11 +328,11 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="text-xs font-bold text-gray-300 uppercase block mb-1">Nama Produk</label>
-                  <input type="text" id="affProdInput" value="Brightening Glow Serum 30ml" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100" />
+                  <input type="text" id="affProdInput" value="Brightening Glow Serum 30ml" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100 outline-none" />
                 </div>
                 <div>
                   <label class="text-xs font-bold text-gray-300 uppercase block mb-1">Durasi Video</label>
-                  <select id="affDurSelect" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100">
+                  <select id="affDurSelect" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100 outline-none">
                     <option value="30 Detik (3 Shot)">30 Detik (3 Shot)</option>
                     <option value="20 Detik (2 Shot)">20 Detik (2 Shot)</option>
                     <option value="60 Detik (6 Shot)">60 Detik (6 Shot)</option>
@@ -366,7 +347,7 @@
             <div id="affiliateHasil" class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-800 space-y-4">
               <div class="flex justify-between items-center border-b border-cyan-950 pb-3">
                 <span class="text-xs font-bold text-cyan-400 uppercase">Naskah Master & Prompt Video AI Siap Salin</span>
-                <button onclick="salinTeksSemua('affiliateTeks')" class="text-xs px-3 py-1 bg-cyan-950 text-cyan-300 rounded border border-cyan-800 font-bold hover:bg-cyan-900">Salin Semua Naskah</button>
+                <button onclick="salinTeksSemua('affiliateTeks')" class="text-xs px-3 py-1 bg-cyan-950 text-cyan-300 rounded border border-cyan-800 font-bold hover:bg-cyan-900 cursor-pointer">Salin Semua Naskah</button>
               </div>
               <div id="affiliateTeks" class="font-mono text-xs text-cyan-100 whitespace-pre-wrap leading-relaxed bg-[#060a14] p-4 rounded-xl border border-cyan-950">
 [SHOT 01 | 00:00 - 00:10]
@@ -387,85 +368,168 @@
             </div>
           </div>
 
-          <!-- VIEW 11: PUSAT VIDEO PANDUAN MASTERCLASS (NOW PLAYING LAB) -->
+          <!-- VIEW 11: PUSAT VIDEO PANDUAN DENGAN VISUAL SCREENCAST NYATA -->
           <div id="view-guide" class="modul-view hidden space-y-6">
             <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-amber-500/40 shadow-2xl space-y-4">
               <div class="flex flex-wrap items-center justify-between gap-3 border-b border-cyan-950 pb-4">
                 <div>
                   <div class="flex items-center gap-2">
                     <span class="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold font-mono uppercase">
-                      Official Masterclass Suite • Suara Narator Aktif
+                      Live Screencast Visual Studio • 11 Video Siap Putar
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-[10px] font-mono">
-                      SPEECH SYNTHESIS REAL-TIME
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono">
+                      100% VISUAL WORKFLOW NYATA
                     </span>
                   </div>
                   <h3 id="guideTitle" class="text-xl font-black text-white mt-1.5 font-sans">
-                    Modul 01: Character Sheet 100% Konsistensi
+                    Modul 01: Character Sheet 100% Konsistensi (Visual Simulator)
                   </h3>
                   <p id="guideSubtitle" class="text-xs text-gray-400">
-                    Membangun anchor wajah dan pakaian terkunci solid #FFFFFF untuk Kling AI & Google Veo 2.
+                    Demonstrasi visual nyata langkah-demi-langkah mengunci anchor wajah dan latar solid #FFFFFF.
                   </p>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span id="visemeBadge" class="text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/30 font-mono">
-                    🟢 Phoneme Viseme Active
+                  <span id="stepBadge" class="text-xs text-cyan-400 bg-cyan-950 px-3 py-1 rounded-xl border border-cyan-800 font-mono">
+                    Langkah Aktif: 1/5 [Upload Wajah]
                   </span>
                 </div>
               </div>
 
-              <!-- PEMUTAR VIDEO & SUARA REAL-TIME -->
+              <!-- PEMUTAR VIDEO VISUAL SCREENCAST LENGKAP -->
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 space-y-4">
-                  <div class="relative aspect-video rounded-2xl bg-gradient-to-b from-[#060a14] to-[#04070e] border border-cyan-800/80 overflow-hidden flex flex-col justify-between p-4 shadow-2xl">
-                    <div class="flex justify-between items-center z-10">
-                      <span id="guideBadge" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-black/80 border border-cyan-800 text-cyan-300">
-                        NOW PLAYING • MODUL 01
-                      </span>
+                  
+                  <!-- KANVAS SIMULASI SCREENCAST VISUAL NYATA -->
+                  <div class="relative aspect-video rounded-2xl bg-[#03060d] border border-cyan-700/80 overflow-hidden flex flex-col justify-between p-4 shadow-2xl">
+                    
+                    <!-- HUD OVERLAY HEADER -->
+                    <div class="flex justify-between items-center z-20">
                       <div class="flex items-center gap-2">
-                        <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono">REC 4K HDR</span>
-                        <span class="text-[10px] text-gray-400 font-mono">Dolby Atmos 5.1</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                        <span id="guideBadge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/80 border border-cyan-800 text-cyan-300">
+                          LIVE SIMULATION • MODUL 01
+                        </span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono">60 FPS RENDERED</span>
+                        <span class="text-[10px] text-gray-400 font-mono">HUD: ACTIVE</span>
                       </div>
                     </div>
 
-                    <!-- SOUNDWAVE & STATUS AUDIO NYATA -->
-                    <div class="flex flex-col items-center justify-center py-6 z-10 text-center">
-                      <div id="guidePlayBtn" onclick="togglePlayVoice()" class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-400 via-teal-400 to-amber-300 flex items-center justify-center text-slate-950 shadow-xl shadow-cyan-500/40 hover:scale-105 active:scale-95 cursor-pointer transition-all">
-                        <i id="playIcon" data-lucide="play" class="w-8 h-8 fill-slate-950 text-slate-950 ml-1"></i>
+                    <!-- AREA KANVAS SCREENCAST SOFTWARE NYATA -->
+                    <div id="visualCanvasArea" class="relative flex-1 my-2 bg-[#090e1a] rounded-xl border border-cyan-900/60 p-3 flex flex-col justify-center items-center overflow-hidden">
+                      
+                      <!-- SIMULASI KURSOR BERGERAK -->
+                      <div class="absolute w-5 h-5 pointer-events-none z-30 animate-cursor">
+                        <svg class="w-5 h-5 text-cyan-300 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3 3l7 18 3-7 7-3L3 3z"/>
+                        </svg>
                       </div>
-                      <div id="playStatus" class="text-xs font-bold text-cyan-200 mt-3 font-mono">
-                        Klik Tombol Play di Atas untuk Mendengar Suara Penjelasan Narator AI!
-                      </div>
-                      <!-- SOUND WAVE SIMULATION -->
-                      <div id="soundwaveBox" class="flex items-end gap-1.5 h-8 mt-3">
-                        <span class="w-1.5 bg-cyan-400 rounded-full h-2"></span>
-                        <span class="w-1.5 bg-cyan-400 rounded-full h-4"></span>
-                        <span class="w-1.5 bg-teal-400 rounded-full h-3"></span>
-                        <span class="w-1.5 bg-amber-400 rounded-full h-6"></span>
-                        <span class="w-1.5 bg-teal-400 rounded-full h-4"></span>
-                        <span class="w-1.5 bg-cyan-400 rounded-full h-5"></span>
-                        <span class="w-1.5 bg-cyan-400 rounded-full h-2"></span>
+
+                      <!-- KONTEN VISUAL SCREENCAST SESUAI LANGKAH AKTIF -->
+                      <div id="screenContent" class="w-full h-full flex flex-col justify-between p-2">
+                        
+                        <!-- HEADER SUB-SOFTWARE -->
+                        <div class="flex justify-between items-center border-b border-cyan-950 pb-1.5 text-[10px] font-mono text-gray-400">
+                          <span class="text-cyan-400 font-bold">OG STUDIO • /character-sheet-engine</span>
+                          <span class="text-amber-400" id="visualStepTitle">Langkah 1: Unggah Foto Referensi Maya Kirana</span>
+                        </div>
+
+                        <!-- BODY VISUAL DISPLAY -->
+                        <div class="flex-1 flex items-center justify-around py-2 gap-2">
+                          
+                          <!-- SLOT 1: FOTO REFERENSI -->
+                          <div class="h-full aspect-[3/4] bg-[#040711] border-2 border-cyan-400 rounded-lg p-2 flex flex-col items-center justify-center text-center relative shadow-lg">
+                            <span class="text-[9px] text-cyan-300 font-bold font-mono block mb-1">1. Wajah Acuan</span>
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-500 to-teal-400 flex items-center justify-center text-2xl shadow-md mb-1">
+                              👩‍💼
+                            </div>
+                            <span class="text-[9px] text-white font-bold truncate">Maya Kirana</span>
+                            <span class="text-[8px] text-emerald-400 font-mono">Biometric Locked</span>
+                            <div class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border border-black"></div>
+                          </div>
+
+                          <!-- ARROW ANIMATIF -->
+                          <div class="text-cyan-400 font-black text-lg pulse-glow">➔</div>
+
+                          <!-- SLOT 2: KANVAS HASIL 4 SUDUT KONSISTENSI LATAR PUTIH -->
+                          <div class="flex-1 h-full bg-white rounded-lg p-2 flex flex-col justify-between border-2 border-emerald-500 shadow-xl relative">
+                            <div class="flex justify-between items-center text-[8px] font-mono font-bold text-slate-800 border-b border-slate-200 pb-1">
+                              <span class="text-emerald-700">CANVAS 4-ANGLE TURNAROUND (#FFFFFF)</span>
+                              <span class="bg-emerald-100 text-emerald-800 px-1 rounded">MATCH: 99.8%</span>
+                            </div>
+                            
+                            <!-- 4 ANGLE MINI DISPLAY -->
+                            <div class="grid grid-cols-4 gap-1 py-1 text-center">
+                              <div class="bg-slate-100 rounded p-1 border border-slate-300">
+                                <div class="text-lg">🧍‍♀️</div>
+                                <span class="text-[7px] text-slate-700 font-bold block">Front</span>
+                              </div>
+                              <div class="bg-slate-100 rounded p-1 border border-slate-300">
+                                <div class="text-lg">🚶‍♀️</div>
+                                <span class="text-[7px] text-slate-700 font-bold block">3/4 Right</span>
+                              </div>
+                              <div class="bg-slate-100 rounded p-1 border border-slate-300">
+                                <div class="text-lg">👤</div>
+                                <span class="text-[7px] text-slate-700 font-bold block">Profile</span>
+                              </div>
+                              <div class="bg-slate-100 rounded p-1 border border-slate-300">
+                                <div class="text-lg">🔙</div>
+                                <span class="text-[7px] text-slate-700 font-bold block">Back</span>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-between items-center text-[8px] font-mono text-slate-500 pt-0.5 border-t border-slate-200">
+                              <span>Wardrobe: Tactical Jacket (Identik)</span>
+                              <span class="text-emerald-700 font-bold">Siap Veo & Kling</span>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <!-- FOOTER KETERANGAN AKSI -->
+                        <div class="bg-cyan-950/60 rounded px-2.5 py-1 flex items-center justify-between text-[9px] font-mono">
+                          <span class="text-gray-300" id="visualActionNote">Gerakkan kursor ke slot referensi ➔ Kunci fitur biometrik ➔ Render lembar 4 sudut berlatar putih bersih</span>
+                          <span class="text-cyan-300 font-bold">8K Ultra-HD</span>
+                        </div>
+
                       </div>
                     </div>
 
-                    <!-- KONTROL PEMUTAR -->
-                    <div class="z-10 bg-black/70 backdrop-blur-md rounded-xl p-3 border border-cyan-950 space-y-2">
+                    <!-- KONTROL PEMUTAR & TIMELINE SCRUBBER -->
+                    <div class="z-20 bg-black/80 backdrop-blur-md rounded-xl p-3 border border-cyan-950 space-y-2">
                       <div class="flex justify-between items-center text-[10px] font-mono text-gray-400">
-                        <span id="timecode">00:00 / 09:40</span>
-                        <span class="text-teal-400">Speaker: Indonesian Web Speech Synthesizer</span>
+                        <span id="timecode">00:15 / 01:30</span>
+                        <span id="playStatus" class="text-cyan-300 font-bold font-mono">Status: Simulasi Berjalan (Auto-Runner)</span>
                       </div>
-                      <div class="w-full h-1.5 bg-cyan-950 rounded-full overflow-hidden">
-                        <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 to-amber-400 w-0 transition-all"></div>
+                      
+                      <!-- TIMELINE SCRUBBER -->
+                      <div class="w-full h-2 bg-cyan-950 rounded-full overflow-hidden cursor-pointer" onclick="lompatTimeline(event)">
+                        <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 w-1/4 transition-all"></div>
                       </div>
+
                       <div class="flex justify-between items-center pt-1">
                         <div class="flex items-center gap-3">
-                          <button onclick="gantiModulGuide(-1)" class="text-xs text-gray-400 hover:text-white cursor-pointer"><i data-lucide="skip-back" class="w-4 h-4"></i></button>
-                          <button onclick="togglePlayVoice()" class="text-xs text-cyan-300 hover:text-white cursor-pointer"><i data-lucide="play" class="w-4 h-4"></i></button>
-                          <button onclick="gantiModulGuide(1)" class="text-xs text-gray-400 hover:text-white cursor-pointer"><i data-lucide="skip-forward" class="w-4 h-4"></i></button>
+                          <button onclick="lompatLangkahVisual(-1)" class="text-xs text-gray-400 hover:text-white cursor-pointer" title="Langkah Sebelumnya"><i data-lucide="skip-back" class="w-4 h-4"></i></button>
+                          <button onclick="toggleVisualPlay()" id="masterPlayBtn" class="px-3 py-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 rounded-lg text-xs font-black flex items-center gap-1 cursor-pointer">
+                            <i id="playIcon" data-lucide="pause" class="w-3.5 h-3.5 fill-slate-950"></i> <span id="playBtnText">Jeda Visual</span>
+                          </button>
+                          <button onclick="lompatLangkahVisual(1)" class="text-xs text-gray-400 hover:text-white cursor-pointer" title="Langkah Berikutnya"><i data-lucide="skip-forward" class="w-4 h-4"></i></button>
                         </div>
+
+                        <!-- 5 TOMBOL STEP CEPAT -->
+                        <div class="hidden sm:flex items-center gap-1 text-[9px] font-mono">
+                          <button onclick="setLangkahLangsung(1)" class="px-2 py-0.5 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800">1. Upload</button>
+                          <button onclick="setLangkahLangsung(2)" class="px-2 py-0.5 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800">2. Kunci #FFF</button>
+                          <button onclick="setLangkahLangsung(3)" class="px-2 py-0.5 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800">3. Render</button>
+                          <button onclick="setLangkahLangsung(4)" class="px-2 py-0.5 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800">4. Verifikasi</button>
+                          <button onclick="setLangkahLangsung(5)" class="px-2 py-0.5 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800">5. Ekspor</button>
+                        </div>
+
                         <div class="flex items-center gap-2">
-                          <span class="text-[10px] text-emerald-400 uppercase font-mono">Audio Ready</span>
-                          <i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i>
+                          <button onclick="toggleVoiceAudio()" class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-mono flex items-center gap-1 cursor-pointer">
+                            <i data-lucide="volume-2" class="w-3 h-3"></i> <span id="voiceStatusText">Suara Aktif</span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -488,7 +552,7 @@
                 <div class="space-y-3">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-black text-white uppercase tracking-wider">PLAYLIST 11 MODUL PANDUAN</span>
-                    <span class="text-[10px] text-cyan-400 font-mono">11 Video Lengkap</span>
+                    <span class="text-[10px] text-cyan-400 font-mono">11 Screencast Visual</span>
                   </div>
                   <div id="playlistContainer" class="space-y-2 max-h-[520px] overflow-y-auto custom-scrollbar pr-1"></div>
                 </div>
@@ -502,26 +566,37 @@
 
   </div>
 
-  <!-- SCRIPT INTERAKTIF 11 MODUL & AUDIO SYNTHESIS NYATA -->
+  <!-- SCRIPT INTERAKTIF 11 MODUL & VISUAL SCREENCAST RUNNER -->
   <script>
     lucide.createIcons();
 
     const dataModul = [
-      { id: 'sheets', no: '01', judul: 'Modul 01: Character Sheet 100% Konsistensi', sub: 'Membangun anchor wajah & pakaian berlatar putih bersih solid #FFFFFF.', durasi: '09:40', voiceText: 'Selamat datang di Modul Satu Character Sheet Studio. Pada modul ini, Anda akan belajar cara mengunci konsistensi pakaian dan wajah karakter hingga seratus persen pada empat sudut: Portrait, Close Up, Full Body, dan Turnaround, dengan latar putih bersih untuk Kling AI dan Google Veo dua.', prompt: '/generate_cinema subject: "Maya Kirana Southeast Asian female, 4 sets turnaround sheet" [solid_white_bg #FFFFFF] --face_lock 100% --wardrobe_sync true' },
-      { id: 'imagegen', no: '02', judul: 'Modul 02: Image Studio & First Frame Hook', sub: 'Merancang thumbnail pembuka video 8K dengan rasio 9:16 dan 16:9.', durasi: '06:15', voiceText: 'Di Modul Dua Image Studio, kita memproduksi First Frame Hook Thumbnail yang memikat dalam rasio sembilan banding enam belas maupun enam belas banding sembilan dengan resolusi delapan K.', prompt: 'First frame hook thumbnail of Indonesian talent holding new product, engaging smile to camera, 8k render, photorealistic lighting' },
-      { id: 'affiliate', no: '03', judul: 'Modul 03: Affiliate Video UGC & E-Commerce', sub: 'Susun naskah promosi padat 10s per-shot dan hook konversi tinggi.', durasi: '08:20', voiceText: 'Modul Tiga Affiliate Prompt menyusun naskah penjualan video produk yang terpecah tepat sepuluh detik per shot, lengkap dengan lip sync dialog dan prompt video untuk Google Flow.', prompt: 'Commercial UGC TikTok style video of female creator reviewing serum, 10-second tight pacing, high-energy sales pitch' },
-      { id: 'influencer', no: '04', judul: 'Modul 04: AI Influencer & Virtual Talent Vault', sub: 'Rancang wajah model virtual konsisten untuk endorsement produk.', durasi: '07:50', voiceText: 'Modul Empat AI Influencer Vault memungkinkan Anda merancang karakter virtual influencer seperti Maya Kirana yang otomatis tersimpan dan tersinkron ke semua modul studio.', prompt: 'Exclusive virtual brand ambassador Maya Kirana, elegant Indonesian woman, studio ring lighting, photorealistic eye reflections' },
-      { id: 'general', no: '05', judul: 'Modul 05: General Prompt & Film Sinematik', sub: 'Breakdown naratif shot demi shot untuk film dan video dramatis.', durasi: '11:10', voiceText: 'Modul Lima General Prompt memecah alur sinematografi film pendek dengan sudut kamera anamorphic tiga puluh lima milimeter dan pencahayaan chiaroscuro.', prompt: 'Cinematic 35mm film scene, anamorphic lens flare, moody color grade, shot-by-shot dramatic pacing, 24fps cinema look' },
-      { id: 'storyboard', no: '06', judul: 'Modul 06: Storyboard Grid & Dokumen Komposit', sub: 'Rakit panel multi-shot ke dokumen utuh dan auto-download PNG.', durasi: '08:45', voiceText: 'Modul Enam Storyboard Grid merangkai seluruh panel shot ke dalam satu dokumen komposit berkualitas cetak yang dapat langsung diunduh dalam format PNG.', prompt: 'Composite storyboard document layout with 4 synchronized scene panels, camera angle notations, and script text overlay' },
-      { id: 'pipeline', no: '07', judul: 'Modul 07: AI Generator Master Pipeline', sub: 'Jalur terpadu: Riset 10 ide konten viral hingga video siap render.', durasi: '12:30', voiceText: 'Modul Tujuh AI Generator adalah jalur master end to end dari riset sepuluh ide konten tren, naskah per adegan, hingga lembar dokumen storyboard.', prompt: 'End-to-end production pipeline from 10 viral content hooks to 10s shot breakdowns and calibrated AI video prompts' },
-      { id: 'multichar', no: '08', judul: 'Modul 08: Generative AI Multi-Character Studio', sub: 'Aksi & dialog interaktif 2+ orang dengan konsistensi 100% terjaga.', durasi: '10:15', voiceText: 'Modul Delapan Generative AI memfasilitasi adegan dua karakter atau lebih dengan interaksi dialog alami dan pakaian yang seratus persen terkunci identik.', prompt: 'Multi-character dialogue scene with two distinct actors interacting naturally, locked wardrobe colors, seamless facial tracking' },
-      { id: 'seadance', no: '09', judul: 'Modul 09: SeaDance Motion & Dance Studio', sub: 'Koreografi gerak tari sinematik dan sinkronisasi beat ritme.', durasi: '07:25', voiceText: 'Modul Sembilan SeaDance Motion mengkalibrasi transfer gerakan tari dinamis, ritme K-Pop, dan kelancaran gerak tubuh enam puluh frame per detik.', prompt: 'SeaDance dynamic choreography prompt: fluid body movement, synchronized K-Pop dance beat, 60fps high frame rate render' },
-      { id: 'flow', no: '10', judul: 'Modul 10: Integrasi Google Flow & Kling AI', sub: 'Teknik ekspor prompt ke platform video AI eksternal 12 kredit.', durasi: '09:05', voiceText: 'Modul Sepuluh memandu Anda menyalin prompt video per shot ke Google Flow dan Kling AI dengan pengaturan tujuh ratus dua puluh p dan dua belas kredit.', prompt: 'Direct-inject prompt for Google Flow and Kling AI 1.5, 720p/4K resolution settings, camera motion speed 0.7' },
-      { id: 'guide', no: '11', judul: 'Modul 11: Google Veo 2 Audio Lip-Sync & Viseme', sub: 'Pemetaan fonem vokal ketat dan artikulasi bibir natural tanpa drift.', durasi: '14:20', voiceText: 'Modul Sebelas membahas teknik prompting audio lip sync Google Veo dua dengan pemetaan fonem vokal ketat agar bibir subjek bergerak sinkron dengan audio narasi.', prompt: 'Veo 2 audio lip-sync prompt: tight phoneme synchronization /m/, /f/, /t/, /r/ Indonesian speech, natural jaw articulation' }
+      { id: 'sheets', no: '01', judul: 'Modul 01: Character Sheet 100% Konsistensi', sub: 'Membangun anchor wajah & pakaian berlatar putih bersih solid #FFFFFF.', durasi: '01:30', voiceText: 'Selamat datang di demonstrasi visual Modul Satu Character Sheet Studio. Perhatikan kursor pada layar: pertama kita mengunggah foto acuan Maya Kirana, lalu sistem otomatis mengunci biometrik wajah dan pakaian, kemudian merender lembar empat sudut berlatar putih solid untuk diekspor ke Kling AI dan Google Veo.', prompt: '/generate_cinema subject: "Maya Kirana Southeast Asian female, 4 sets turnaround sheet" [solid_white_bg #FFFFFF] --face_lock 100% --wardrobe_sync true' },
+      { id: 'imagegen', no: '02', judul: 'Modul 02: Image Studio & First Frame Hook', sub: 'Merancang thumbnail pembuka video 8K dengan rasio 9:16 dan 16:9.', durasi: '01:15', voiceText: 'Di Modul Dua Image Studio, visual screencast memperlihatkan pembuatan First Frame Hook Thumbnail beresolusi delapan K dengan rasio sembilan banding enam belas.', prompt: 'First frame hook thumbnail of Indonesian talent holding new product, engaging smile to camera, 8k render, photorealistic lighting' },
+      { id: 'affiliate', no: '03', judul: 'Modul 03: Affiliate Video UGC & E-Commerce', sub: 'Susun naskah promosi padat 10s per-shot dan hook konversi tinggi.', durasi: '01:20', voiceText: 'Modul Tiga Affiliate Prompt menyusun naskah penjualan video produk yang terpecah tepat sepuluh detik per shot, lengkap dengan lip sync dialog dan prompt video untuk Google Flow.', prompt: 'Commercial UGC TikTok style video of female creator reviewing serum, 10-second tight pacing, high-energy sales pitch' },
+      { id: 'influencer', no: '04', judul: 'Modul 04: AI Influencer & Virtual Talent Vault', sub: 'Rancang wajah model virtual konsisten untuk endorsement produk.', durasi: '01:10', voiceText: 'Modul Empat AI Influencer Vault memperlihatkan cara menyimpan karakter Maya Kirana agar wajah dan gayanya langsung terbawa ke modul lainnya.', prompt: 'Exclusive virtual brand ambassador Maya Kirana, elegant Indonesian woman, studio ring lighting, photorealistic eye reflections' },
+      { id: 'general', no: '05', judul: 'Modul 05: General Prompt & Film Sinematik', sub: 'Breakdown naratif shot demi shot untuk film dan video dramatis.', durasi: '01:40', voiceText: 'Modul Lima General Prompt memecah alur sinematografi film pendek dengan sudut kamera anamorphic tiga puluh lima milimeter dan pencahayaan chiaroscuro.', prompt: 'Cinematic 35mm film scene, anamorphic lens flare, moody color grade, shot-by-shot dramatic pacing, 24fps cinema look' },
+      { id: 'storyboard', no: '06', judul: 'Modul 06: Storyboard Grid & Dokumen Komposit', sub: 'Rakit panel multi-shot ke dokumen utuh dan auto-download PNG.', durasi: '01:25', voiceText: 'Modul Enam Storyboard Grid merangkai seluruh panel shot ke dalam satu dokumen komposit berkualitas cetak yang dapat langsung diunduh dalam format PNG.', prompt: 'Composite storyboard document layout with 4 synchronized scene panels, camera angle notations, and script text overlay' },
+      { id: 'pipeline', no: '07', judul: 'Modul 07: AI Generator Master Pipeline', sub: 'Jalur terpadu: Riset 10 ide konten viral hingga video siap render.', durasi: '01:50', voiceText: 'Modul Tujuh AI Generator adalah jalur master end to end dari riset sepuluh ide konten tren, naskah per adegan, hingga lembar dokumen storyboard.', prompt: 'End-to-end production pipeline from 10 viral content hooks to 10s shot breakdowns and calibrated AI video prompts' },
+      { id: 'multichar', no: '08', judul: 'Modul 08: Generative AI Multi-Character Studio', sub: 'Aksi & dialog interaktif 2+ orang dengan konsistensi 100% terjaga.', durasi: '01:35', voiceText: 'Modul Delapan Generative AI memfasilitasi adegan dua karakter atau lebih dengan interaksi dialog alami dan pakaian yang seratus persen terkunci identik.', prompt: 'Multi-character dialogue scene with two distinct actors interacting naturally, locked wardrobe colors, seamless facial tracking' },
+      { id: 'seadance', no: '09', judul: 'Modul 09: SeaDance Motion & Dance Studio', sub: 'Koreografi gerak tari sinematik dan sinkronisasi beat ritme.', durasi: '01:15', voiceText: 'Modul Sembilan SeaDance Motion mengkalibrasi transfer gerakan tari dinamis, ritme K-Pop, dan kelancaran gerak tubuh enam puluh frame per detik.', prompt: 'SeaDance dynamic choreography prompt: fluid body movement, synchronized K-Pop dance beat, 60fps high frame rate render' },
+      { id: 'flow', no: '10', judul: 'Modul 10: Integrasi Google Flow & Kling AI', sub: 'Teknik ekspor prompt ke platform video AI eksternal 12 kredit.', durasi: '01:20', voiceText: 'Modul Sepuluh memandu Anda menyalin prompt video per shot ke Google Flow dan Kling AI dengan pengaturan tujuh ratus dua puluh p dan dua belas kredit.', prompt: 'Direct-inject prompt for Google Flow and Kling AI 1.5, 720p/4K resolution settings, camera motion speed 0.7' },
+      { id: 'guide', no: '11', judul: 'Modul 11: Google Veo 2 Audio Lip-Sync & Viseme', sub: 'Pemetaan fonem vokal ketat dan artikulasi bibir natural tanpa drift.', durasi: '01:45', voiceText: 'Modul Sebelas membahas teknik prompting audio lip sync Google Veo dua dengan pemetaan fonem vokal ketat agar bibir subjek bergerak sinkron dengan audio narasi.', prompt: 'Veo 2 audio lip-sync prompt: tight phoneme synchronization /m/, /f/, /t/, /r/ Indonesian speech, natural jaw articulation' }
     ];
 
     let currentModulIndex = 0;
-    let isSpeaking = false;
+    let currentStepIndex = 1;
+    let isVisualPlaying = true;
+    let voiceEnabled = true;
+    let visualTimer = null;
+
+    const stepDetails = [
+      { step: 1, title: 'Langkah 1: Unggah Foto Wajah Referensi Maya Kirana', note: 'Kursor memilih berkas acuan wajah ➔ Sistem membaca fitur biometrik 99.8%' },
+      { step: 2, title: 'Langkah 2: Kunci Latar Belakang Solid Pure White (#FFFFFF)', note: 'Aktifkan mode solid pure white latar ➔ Memisahkan objek dari noise background' },
+      { step: 3, title: 'Langkah 3: Proses Render AI 4 Sudut Konsistensi 100%', note: 'AI merender Front, 3/4 Right, Side Profile, dan Back View secara sinkron' },
+      { step: 4, title: 'Langkah 4: Verifikasi Bounding Box & Kesamaan Pakaian', note: 'Pakaian jaket taktikal terkunci identik di semua sudut tanpa perubahan warna' },
+      { step: 5, title: 'Langkah 5: Ekspor Dokumen PNG & Master Prompt ke Google Flow', note: 'Salin master prompt kalibrasi ➔ Langsung tempel ke Google Flow 720p 8s' }
+    ];
 
     function renderPlaylist() {
       const cont = document.getElementById('playlistContainer');
@@ -534,7 +609,7 @@
         div.className = `p-3 rounded-xl border cursor-pointer transition-all ${active ? 'bg-cyan-500/15 border-cyan-400 text-white shadow-lg' : 'bg-[#060a14] border-cyan-950/80 text-gray-400 hover:border-cyan-800 hover:text-white'}`;
         div.innerHTML = `
           <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-mono font-bold ${active ? 'text-amber-400' : 'text-gray-500'}">MODUL ${m.no}</span>
+            <span class="text-[10px] font-mono font-bold ${active ? 'text-amber-400' : 'text-gray-500'}">SCREENCAST ${m.no}</span>
             <span class="text-[10px] font-mono text-cyan-400">${m.durasi}</span>
           </div>
           <div class="text-xs font-bold truncate">${m.judul}</div>
@@ -544,87 +619,117 @@
       });
     }
 
-    function pilihVideoGuideIndex(idx) {
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      isSpeaking = false;
-      currentModulIndex = idx;
-      const m = dataModul[idx];
-      document.getElementById('guideTitle').innerText = m.judul;
-      document.getElementById('guideSubtitle').innerText = m.sub;
-      document.getElementById('guideBadge').innerText = `NOW PLAYING • MODUL ${m.no}`;
-      document.getElementById('timecode').innerText = `00:00 / ${m.durasi}`;
-      document.getElementById('guidePrompt').innerText = m.prompt;
+    function updateVisualStepDisplay() {
+      const info = stepDetails[currentStepIndex - 1];
+      document.getElementById('visualStepTitle').innerText = info.title;
+      document.getElementById('visualActionNote').innerText = info.note;
+      document.getElementById('stepBadge').innerText = `Langkah Aktif: ${currentStepIndex}/5 [${info.title.split(':')[1]?.trim() || 'Visual'}]`;
       
-      const btn = document.getElementById('playStatus');
-      btn.innerText = 'Klik Tombol Play di Atas untuk Mendengar Suara Penjelasan Narator AI!';
-      btn.className = 'text-xs font-bold text-cyan-200 mt-3 font-mono';
-      document.getElementById('playIcon').setAttribute('data-lucide', 'play');
-      setWaveActive(false);
-      renderPlaylist();
-      lucide.createIcons();
+      const pct = (currentStepIndex / 5) * 100;
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('timecode').innerText = `00:${(currentStepIndex * 18).toString().padStart(2, '0')} / 01:30`;
     }
 
-    function setWaveActive(active) {
-      const bars = document.querySelectorAll('#soundwaveBox span');
-      bars.forEach(b => {
-        if (active) b.classList.add('wave-active');
-        else b.classList.remove('wave-active');
-      });
+    function runVisualSimulation() {
+      clearInterval(visualTimer);
+      if (!isVisualPlaying) return;
+
+      visualTimer = setInterval(() => {
+        currentStepIndex++;
+        if (currentStepIndex > 5) {
+          currentStepIndex = 1;
+        }
+        updateVisualStepDisplay();
+      }, 3500);
     }
 
-    function togglePlayVoice() {
-      if (!('speechSynthesis' in window)) {
-        alert('Browser Anda belum mendukung Web Speech Audio. Silakan gunakan Google Chrome versi terbaru.');
-        return;
-      }
+    function toggleVisualPlay() {
+      isVisualPlaying = !isVisualPlaying;
+      const btnText = document.getElementById('playBtnText');
+      const icon = document.getElementById('playIcon');
+      const status = document.getElementById('playStatus');
 
-      if (isSpeaking) {
-        window.speechSynthesis.cancel();
-        isSpeaking = false;
-        document.getElementById('playStatus').innerText = 'Audio Narasi Dijeda. Klik tombol Play untuk memutar kembali.';
-        document.getElementById('playStatus').className = 'text-xs font-bold text-amber-400 mt-3 font-mono';
-        document.getElementById('playIcon').setAttribute('data-lucide', 'play');
-        setWaveActive(false);
+      if (isVisualPlaying) {
+        btnText.innerText = 'Jeda Visual';
+        status.innerText = 'Status: Simulasi Berjalan (Auto-Runner)';
+        status.className = 'text-cyan-300 font-bold font-mono';
+        icon.setAttribute('data-lucide', 'pause');
+        runVisualSimulation();
+        if (voiceEnabled) bicaraVoice(dataModul[currentModulIndex].voiceText);
       } else {
-        const m = dataModul[currentModulIndex];
-        const utterance = new SpeechSynthesisUtterance(m.voiceText);
-        utterance.lang = 'id-ID';
-        utterance.rate = 0.95;
-
-        utterance.onstart = () => {
-          isSpeaking = true;
-          document.getElementById('playStatus').innerText = 'Sedang Berbicara: Narator Suara Asli AI Menjelaskan Modul ' + m.no + '...';
-          document.getElementById('playStatus').className = 'text-xs font-bold text-emerald-400 mt-3 font-mono animate-pulse';
-          document.getElementById('playIcon').setAttribute('data-lucide', 'pause');
-          setWaveActive(true);
-          lucide.createIcons();
-        };
-
-        utterance.onend = () => {
-          isSpeaking = false;
-          document.getElementById('playStatus').innerText = 'Audio Selesai Diputar. Pilih modul lain atau putar kembali.';
-          document.getElementById('playStatus').className = 'text-xs font-bold text-cyan-200 mt-3 font-mono';
-          document.getElementById('playIcon').setAttribute('data-lucide', 'play');
-          setWaveActive(false);
-          lucide.createIcons();
-        };
-
-        window.speechSynthesis.speak(utterance);
+        btnText.innerText = 'Putar Visual';
+        status.innerText = 'Status: Video Visual Dijeda';
+        status.className = 'text-amber-400 font-bold font-mono';
+        icon.setAttribute('data-lucide', 'play');
+        clearInterval(visualTimer);
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
       }
       lucide.createIcons();
     }
 
-    function gantiModulGuide(direction) {
-      let next = currentModulIndex + direction;
-      if (next < 0) next = dataModul.length - 1;
-      if (next >= dataModul.length) next = 0;
-      pilihVideoGuideIndex(next);
+    function setLangkahLangsung(stepNum) {
+      currentStepIndex = stepNum;
+      updateVisualStepDisplay();
+    }
+
+    function lompatLangkahVisual(dir) {
+      currentStepIndex += dir;
+      if (currentStepIndex < 1) currentStepIndex = 5;
+      if (currentStepIndex > 5) currentStepIndex = 1;
+      updateVisualStepDisplay();
+    }
+
+    function lompatTimeline(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = clickX / rect.width;
+      currentStepIndex = Math.max(1, Math.min(5, Math.ceil(pct * 5)));
+      updateVisualStepDisplay();
+    }
+
+    function bicaraVoice(text) {
+      if (!voiceEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'id-ID';
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleVoiceAudio() {
+      voiceEnabled = !voiceEnabled;
+      const st = document.getElementById('voiceStatusText');
+      if (voiceEnabled) {
+        st.innerText = 'Suara Aktif';
+        bicaraVoice(dataModul[currentModulIndex].voiceText);
+      } else {
+        st.innerText = 'Mute Suara';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    function pilihVideoGuideIndex(idx) {
+      currentModulIndex = idx;
+      currentStepIndex = 1;
+      const m = dataModul[idx];
+      document.getElementById('guideTitle').innerText = m.judul + ' (Visual Simulator)';
+      document.getElementById('guideSubtitle').innerText = m.sub;
+      document.getElementById('guideBadge').innerText = `LIVE SIMULATION • MODUL ${m.no}`;
+      document.getElementById('guidePrompt').innerText = m.prompt;
+      updateVisualStepDisplay();
+      renderPlaylist();
+      if (isVisualPlaying) {
+        runVisualSimulation();
+        if (voiceEnabled) bicaraVoice(m.voiceText);
+      }
     }
 
     function masukStudio() {
       document.getElementById('splashScreen').classList.add('hidden');
       document.getElementById('mainStudio').classList.remove('hidden');
       renderPlaylist();
+      updateVisualStepDisplay();
+      runVisualSimulation();
       lucide.createIcons();
     }
 
@@ -635,6 +740,7 @@
 
     function kembaliSplash() {
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      clearInterval(visualTimer);
       document.getElementById('mainStudio').classList.add('hidden');
       document.getElementById('splashScreen').classList.remove('hidden');
       lucide.createIcons();
@@ -659,6 +765,7 @@
 
       if (id === 'guide') {
         renderPlaylist();
+        runVisualSimulation();
       }
 
       const titles = {
@@ -673,7 +780,7 @@
         'multichar': 'Modul 08: Generative AI Multi-Character Studio',
         'seadance': 'Modul 09: SeaDance AI Motion & Dance Studio',
         'flow': 'Modul 10: Integrasi Google Flow & External Video',
-        'guide': 'Modul 11: Pusat Video Panduan Masterclass (Suara Real-Time)'
+        'guide': 'Modul 11: Pusat Video Panduan Screencast (11 Modul Live)'
       };
       document.getElementById('judulModul').innerText = titles[id] || 'Studio Workspace';
       lucide.createIcons();
@@ -705,6 +812,7 @@
 
     window.onload = function() {
       renderPlaylist();
+      updateVisualStepDisplay();
       lucide.createIcons();
     };
   </script>
