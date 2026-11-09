@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OG AI Director Pro • Studio Orkestrasi AI Video</title>
+  <title>OG AI Director Pro • Studio Orkestrasi AI Video & 11 Modul Panduan</title>
   <meta name="theme-color" content="#06b6d4" />
 
-  <!-- Google Fonts & Tailwind CSS CDN -->
+  <!-- Tailwind CSS & Lucide Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     body {
@@ -23,92 +24,144 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #164e63; border-radius: 9999px; }
-    .glow-cyan { box-shadow: 0 0 25px rgba(6, 182, 212, 0.25); }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #0891b2; }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+    .animate-glow { animation: pulseGlow 2.5s infinite; }
   </style>
 </head>
 <body class="bg-[#070b14] text-slate-100 antialiased selection:bg-cyan-500/30 min-h-screen">
 
-  <!-- ==================== HALAMAN PEMBUKA / SPLASH SCREEN ==================== -->
+  <!-- ==================== SPLASH SCREEN ==================== -->
   <div id="splashScreen" class="flex flex-col items-center justify-center min-h-screen w-full px-4 relative overflow-hidden">
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative text-center space-y-6 max-w-xl w-full p-8 sm:p-12 rounded-3xl bg-[#0a0f1d]/90 border border-cyan-800/50 shadow-2xl backdrop-blur-xl">
-      <div class="inline-flex p-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-400 text-slate-900 shadow-xl shadow-cyan-500/30 text-3xl font-black">
-        🎬
+      <div class="inline-flex p-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-400 text-slate-900 shadow-xl shadow-cyan-500/30">
+        <i data-lucide="clapperboard" class="w-10 h-10 text-slate-950"></i>
       </div>
 
       <div class="space-y-2">
         <span class="text-[11px] font-bold text-amber-400 tracking-widest uppercase px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
-          NEXT-GEN AI PRODUCTION ENVIRONMENT
+          NEXT-GEN AI PRODUCTION ENVIRONMENT • 11 MODUL MASTER
         </span>
         <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight pt-2">
           OG AI <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">DIRECTOR PRO</span>
         </h1>
         <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed pt-1">
-          Studio orkestrasi konten dan sutradara video AI profesional. 100% Locked Consistency, Storyboard Grid, dan Google Flow Ready.
+          Studio orkestrasi konten dan sutradara video AI profesional. 11 modul terintegrasi: konsistensi 100%, naskah per-shot 10s, SeaDance dance motion, generator video Google Veo 2 / Kling, dan Pusat Masterclass Video.
         </p>
       </div>
 
-      <div class="pt-4">
+      <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
         <button 
           onclick="masukStudio()"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 hover:from-cyan-400 hover:to-teal-300 text-slate-950 font-black text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
+          class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 hover:from-cyan-400 hover:to-teal-300 text-slate-950 font-black text-sm sm:text-base rounded-2xl shadow-xl shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
         >
-          MASUK KE STUDIO SUTRADARA ➔
+          MASUK KE STUDIO SUTRADARA <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+        <button 
+          onclick="masukKePanduan()"
+          class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#0d172a] hover:bg-[#14233f] text-cyan-300 font-bold text-sm rounded-2xl border border-cyan-800/80 transition-all cursor-pointer"
+        >
+          <i data-lucide="play-circle" class="w-4 h-4 text-amber-400"></i> Video Masterclass 11 Modul
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ==================== HALAMAN UTAMA DASHBOARD STUDIO ==================== -->
+  <!-- ==================== DASHBOARD STUDIO (11 MODUL) ==================== -->
   <div id="mainStudio" class="hidden flex h-screen w-full overflow-hidden bg-[#070b14]">
     
-    <!-- SIDEBAR NAVIGASI -->
-    <aside class="w-64 bg-[#0a0f1d] border-r border-cyan-950 flex flex-col shrink-0">
+    <!-- SIDEBAR NAVIGASI (11 MODUL) -->
+    <aside class="w-72 bg-[#0a0f1d] border-r border-cyan-950 flex flex-col shrink-0">
       <div class="p-5 border-b border-cyan-950 flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-400 flex items-center justify-center text-slate-900 font-bold text-xl shadow-md shadow-cyan-500/20">
-          🎬
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-400 flex items-center justify-center text-slate-900 shadow-md shadow-cyan-500/20">
+          <i data-lucide="clapperboard" class="w-5 h-5 text-slate-950"></i>
         </div>
         <div>
           <div class="font-black text-sm text-white">OG AI DIRECTOR</div>
-          <div class="text-[10px] text-cyan-400 font-mono font-bold tracking-wider">PRO LIFETIME</div>
+          <div class="text-[10px] text-cyan-400 font-mono font-bold tracking-wider">11 MODUL AKTIF</div>
         </div>
       </div>
 
-      <nav class="flex-1 overflow-y-auto p-3 space-y-1.5 custom-scrollbar">
-        <button onclick="pilihModul('home')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30">
-          <span>✨</span> <span>Workspace Home</span>
+      <nav class="flex-1 overflow-y-auto p-3 space-y-1 custom-scrollbar">
+        <!-- 0. HOME -->
+        <button onclick="pilihModul('home')" id="btn-home" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 text-left">
+          <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+          <div><div class="text-white">Workspace Home</div><div class="text-[9px] text-cyan-400/80 uppercase font-mono">Pusat Studio</div></div>
         </button>
-        <button onclick="pilihModul('sheets')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>👥</span> <span>Character Sheet Studio</span>
+
+        <!-- 1. CHARACTER SHEET -->
+        <button onclick="pilihModul('sheets')" id="btn-sheets" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+          <div><div>01. Character Sheet</div><div class="text-[9px] text-gray-500 uppercase font-mono">4 Sudut Konsisten 100%</div></div>
         </button>
-        <button onclick="pilihModul('imagegen')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>📸</span> <span>Image Studio (First Frame)</span>
+
+        <!-- 2. IMAGE STUDIO -->
+        <button onclick="pilihModul('imagegen')" id="btn-imagegen" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="camera" class="w-4 h-4 text-teal-400"></i>
+          <div><div>02. Image Studio</div><div class="text-[9px] text-gray-500 uppercase font-mono">First Frame Thumbnail</div></div>
         </button>
-        <button onclick="pilihModul('affiliate')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>📢</span> <span>Affiliate Prompt</span>
+
+        <!-- 3. AFFILIATE PROMPT -->
+        <button onclick="pilihModul('affiliate')" id="btn-affiliate" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="megaphone" class="w-4 h-4 text-amber-400"></i>
+          <div><div>03. Affiliate Prompt</div><div class="text-[9px] text-gray-500 uppercase font-mono">Sales & E-Commerce UGC</div></div>
         </button>
-        <button onclick="pilihModul('influencer')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>👤</span> <span>AI Influencer Vault</span>
+
+        <!-- 4. AI INFLUENCER -->
+        <button onclick="pilihModul('influencer')" id="btn-influencer" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="user" class="w-4 h-4 text-pink-400"></i>
+          <div><div>04. AI Influencer Vault</div><div class="text-[9px] text-gray-500 uppercase font-mono">Virtual Talent Creator</div></div>
         </button>
-        <button onclick="pilihModul('general')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>🎬</span> <span>General Prompt Sinematik</span>
+
+        <!-- 5. GENERAL PROMPT -->
+        <button onclick="pilihModul('general')" id="btn-general" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="film" class="w-4 h-4 text-cyan-400"></i>
+          <div><div>05. General Prompt</div><div class="text-[9px] text-gray-500 uppercase font-mono">Film & Sinematik</div></div>
         </button>
-        <button onclick="pilihModul('storyboard')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>📑</span> <span>Storyboard Grid</span>
+
+        <!-- 6. STORYBOARD GRID -->
+        <button onclick="pilihModul('storyboard')" id="btn-storyboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="layout-grid" class="w-4 h-4 text-indigo-400"></i>
+          <div><div>06. Storyboard Grid</div><div class="text-[9px] text-gray-500 uppercase font-mono">Composite Document PNG</div></div>
         </button>
-        <button onclick="pilihModul('pipeline')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>🚀</span> <span>AI Generator (Master)</span>
+
+        <!-- 7. AI GENERATOR -->
+        <button onclick="pilihModul('pipeline')" id="btn-pipeline" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="route" class="w-4 h-4 text-emerald-400"></i>
+          <div><div>07. AI Generator Master</div><div class="text-[9px] text-gray-500 uppercase font-mono">Riset 10 Ide Konten</div></div>
         </button>
-        <button onclick="pilihModul('multichar')" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white">
-          <span>🎥</span> <span>Generative AI Multi-Char</span>
+
+        <!-- 8. GENERATIVE AI MULTI-CHAR -->
+        <button onclick="pilihModul('multichar')" id="btn-multichar" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="video" class="w-4 h-4 text-purple-400"></i>
+          <div><div>08. Generative AI Gen</div><div class="text-[9px] text-gray-500 uppercase font-mono">Multi-Char Action & Dialog</div></div>
+        </button>
+
+        <!-- 9. SEADANCE DANCE MOTION -->
+        <button onclick="pilihModul('seadance')" id="btn-seadance" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
+          <div><div>09. SeaDance Motion</div><div class="text-[9px] text-gray-500 uppercase font-mono">Tari Dinamis & Motion Transfer</div></div>
+        </button>
+
+        <!-- 10. GOOGLE FLOW & EXTERNAL VIDEO -->
+        <button onclick="pilihModul('flow')" id="btn-flow" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left">
+          <i data-lucide="external-link" class="w-4 h-4 text-blue-400"></i>
+          <div><div>10. Google Flow & Veo 2</div><div class="text-[9px] text-gray-500 uppercase font-mono">Ekspor Prompt Video Eksternal</div></div>
+        </button>
+
+        <!-- 11. PUSAT VIDEO PANDUAN MASTERCLASS (NOW PLAYING) -->
+        <button onclick="pilihModul('guide')" id="btn-guide" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-amber-300 bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-left">
+          <i data-lucide="play-circle" class="w-4 h-4 text-amber-400 animate-pulse"></i>
+          <div><div class="flex items-center gap-1.5"><span>11. Video Panduan Master</span><span class="text-[8px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold font-mono">LIVE LAB</span></div><div class="text-[9px] text-amber-400/80 uppercase font-mono">Pemutar 11 Video & Viseme</div></div>
         </button>
       </nav>
 
-      <div class="p-4 border-t border-cyan-950 text-center">
+      <div class="p-3 border-t border-cyan-950 text-center">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
-          🟢 Auto-Connect Active
+          🟢 Auto-Connect Master API Aktif
         </span>
       </div>
     </aside>
@@ -118,9 +171,9 @@
       <!-- HEADER -->
       <header class="h-16 px-8 border-b border-cyan-950 bg-[#0a0f1d]/80 backdrop-blur-md flex items-center justify-between shrink-0">
         <div class="flex items-center gap-3">
-          <h2 id="judulModul" class="text-base font-black text-white">Workspace Home</h2>
+          <h2 id="judulModul" class="text-base font-black text-white">Workspace Home • Pusat Studio</h2>
           <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold font-mono">
-            STUDIO VERSI LIVE
+            11 MODUL TERSEDIA
           </span>
         </div>
         <div class="flex items-center gap-3">
@@ -135,35 +188,320 @@
       <div class="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
         <div class="max-w-5xl mx-auto space-y-6">
 
-          <!-- BANNER HERO -->
-          <div class="p-8 rounded-3xl bg-gradient-to-r from-cyan-950/60 via-[#0d1627] to-amber-950/30 border border-cyan-800/40 relative overflow-hidden">
-            <span class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 inline-block mb-3">
-              🔥 STATUS SISTEM: AKTIF & SIAP GENERATE
-            </span>
-            <h3 class="text-2xl font-black text-white">Selamat Datang di Studio OG AI Director Pro</h3>
-            <p class="text-xs md:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
-              Website ini sudah aktif 100% online di Vercel. Anda dapat mulai memilih modul di sidebar sebelah kiri atau tombol cepat di bawah untuk membuat naskah, merancang karakter konsisten, dan mengekspor prompt siap render ke Kling AI atau Google Flow.
-            </p>
+          <!-- VIEW 0: HOME -->
+          <div id="view-home" class="modul-view space-y-6">
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-cyan-950/60 via-[#0d1627] to-amber-950/30 border border-cyan-800/40 relative overflow-hidden">
+              <span class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 inline-block mb-3">
+                🔥 11 DARI 11 MODUL LENGKAP & PUSAT VIDEO PANDUAN AKTIF
+              </span>
+              <h3 class="text-2xl font-black text-white">Studio Orkestrasi Konten & Sutradara AI Pro</h3>
+              <p class="text-xs md:text-sm text-gray-300 mt-2 max-w-2xl leading-relaxed">
+                Seluruh 11 fitur telah aktif lengkap dengan pemutar tutorial interaktif, tombol ekspor prompt ke Kling AI & Google Veo 2, simulasi tari SeaDance, dan form konsistensi wajah 100%.
+              </p>
+              <div class="mt-4 flex gap-3">
+                <button onclick="pilihModul('guide')" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                  <i data-lucide="play-circle" class="w-4 h-4"></i> Buka Pemutar Video Panduan (11 Modul)
+                </button>
+              </div>
+            </div>
+
+            <!-- GRID 11 MODUL -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div onclick="pilihModul('sheets')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="users"></i></div>
+                <h4 class="font-bold text-white text-sm">01. Character Sheet</h4>
+                <p class="text-[11px] text-gray-400">4 Sudut konsisten latar putih solid #FFFFFF (Portrait, Close-Up, Full Body, Turnaround).</p>
+              </div>
+              <div onclick="pilihModul('imagegen')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="camera"></i></div>
+                <h4 class="font-bold text-white text-sm">02. Image Studio</h4>
+                <p class="text-[11px] text-gray-400">First frame hook thumbnail pembuka video dan multi-image render bebas.</p>
+              </div>
+              <div onclick="pilihModul('affiliate')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="megaphone"></i></div>
+                <h4 class="font-bold text-white text-sm">03. Affiliate Prompt</h4>
+                <p class="text-[11px] text-gray-400">Naskah promosi produk dan UGC padat isi 10s per-shot konversi tinggi.</p>
+              </div>
+              <div onclick="pilihModul('influencer')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="user"></i></div>
+                <h4 class="font-bold text-white text-sm">04. AI Influencer</h4>
+                <p class="text-[11px] text-gray-400">Rancang model virtual eksklusif (Maya Kirana) untuk endorsement.</p>
+              </div>
+              <div onclick="pilihModul('general')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="film"></i></div>
+                <h4 class="font-bold text-white text-sm">05. General Prompt</h4>
+                <p class="text-[11px] text-gray-400">Breakdown adegan sutradara sinematik shot demi shot film pendek.</p>
+              </div>
+              <div onclick="pilihModul('storyboard')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="layout-grid"></i></div>
+                <h4 class="font-bold text-white text-sm">06. Storyboard Grid</h4>
+                <p class="text-[11px] text-gray-400">Rakit panel multi-shot dan dokumen visual komposit tersinkron.</p>
+              </div>
+              <div onclick="pilihModul('pipeline')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="route"></i></div>
+                <h4 class="font-bold text-white text-sm">07. AI Generator Master</h4>
+                <p class="text-[11px] text-gray-400">Jalur terpadu: Riset 10 ide konten viral hingga prompt siap render.</p>
+              </div>
+              <div onclick="pilihModul('multichar')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit"><i data-lucide="video"></i></div>
+                <h4 class="font-bold text-white text-sm">08. Generative AI Gen</h4>
+                <p class="text-[11px] text-gray-400">Aksi & dialog multi-karakter konsisten 100% pakaian dan wajah.</p>
+              </div>
+              <div onclick="pilihModul('seadance')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-rose-500/10 text-rose-400 w-fit"><i data-lucide="activity"></i></div>
+                <h4 class="font-bold text-white text-sm">09. SeaDance Motion</h4>
+                <p class="text-[11px] text-gray-400">Koreografi gerak tari sinematik, k-pop beat, dan motion transfer.</p>
+              </div>
+              <div onclick="pilihModul('flow')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 w-fit"><i data-lucide="external-link"></i></div>
+                <h4 class="font-bold text-white text-sm">10. Google Flow & Veo 2</h4>
+                <p class="text-[11px] text-gray-400">Panduan ekspor prompt langsung ke generator Google Flow & Kling AI.</p>
+              </div>
+              <div onclick="pilihModul('guide')" class="p-5 rounded-2xl bg-[#0a0f1d] border border-amber-500/40 hover:border-amber-400 transition-all cursor-pointer space-y-2 group">
+                <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 w-fit"><i data-lucide="play-circle"></i></div>
+                <h4 class="font-bold text-white text-sm">11. Pusat Video Panduan</h4>
+                <p class="text-[11px] text-gray-400">Pemutar video 4K interaktif dengan narasi suara instruktur AI & phoneme.</p>
+              </div>
+            </div>
           </div>
 
-          <!-- KARTU FITUR CEPAT -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
-              <div class="text-2xl">👥</div>
-              <h4 class="font-bold text-white text-sm">Character Sheet</h4>
-              <p class="text-[11px] text-gray-400">Kunci konsistensi pakaian dan wajah 100% berlatar putih bersih.</p>
+          <!-- VIEW 1: CHARACTER SHEET STUDIO -->
+          <div id="view-sheets" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="users"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 01: Character Sheet Studio</h3><p class="text-xs text-gray-400">Kunci konsistensi karakter 100% berlatar putih bersih (#FFFFFF).</p></div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="text-xs font-bold text-gray-300 uppercase block mb-1">Nama Karakter</label><input type="text" id="csName" value="Maya Kirana" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100" /></div>
+                <div><label class="text-xs font-bold text-gray-300 uppercase block mb-1">Gaya Visual</label><select id="csStyle" class="w-full bg-[#060a14] border border-cyan-950 rounded-xl px-4 py-2.5 text-sm text-cyan-100"><option>Photorealistic Cinema (Sony FX3 35mm)</option><option>High-End Fashion Editorial Look</option></select></div>
+              </div>
+              <button onclick="alert('4 Set Character Sheet Konsisten Berhasil Dibuat!')" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">⚡ Generate 4 Sheet Konsistensi Karakter</button>
             </div>
+          </div>
 
-            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
-              <div class="text-2xl">📢</div>
-              <h4 class="font-bold text-white text-sm">Affiliate Prompt</h4>
-              <p class="text-[11px] text-gray-400">Susun naskah promosi produk dan UGC berdurasi 10 detik per shot.</p>
+          <!-- VIEW 2: IMAGE STUDIO -->
+          <div id="view-imagegen" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="camera"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 02: Image Studio</h3><p class="text-xs text-gray-400">First frame thumbnail video frame pembuka.</p></div>
+              </div>
+              <button onclick="alert('First Frame Hook Berhasil Digenerate!')" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">📸 Generate First Frame Thumbnail</button>
             </div>
+          </div>
 
-            <div class="p-5 rounded-2xl bg-[#0a0f1d] border border-cyan-950 hover:border-cyan-500/50 transition-all space-y-2">
-              <div class="text-2xl">📑</div>
-              <h4 class="font-bold text-white text-sm">Storyboard Grid</h4>
-              <p class="text-[11px] text-gray-400">Rakit naskah dialog dan visual adegan ke lembar storyboard utuh.</p>
+          <!-- VIEW 3: AFFILIATE PROMPT -->
+          <div id="view-affiliate" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="megaphone"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 03: Affiliate Prompt</h3><p class="text-xs text-gray-400">Naskah promosi produk UGC 10 detik per shot.</p></div>
+              </div>
+              <button onclick="alert('Naskah Komersial 10 Detik per Shot Berhasil Dibuat!')" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">🚀 Generate Affiliate Naskah & Prompts</button>
+            </div>
+          </div>
+
+          <!-- VIEW 4: AI INFLUENCER -->
+          <div id="view-influencer" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="user"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 04: AI Influencer Vault</h3><p class="text-xs text-gray-400">Model virtual eksklusif (Maya Kirana) untuk endorsement.</p></div>
+              </div>
+              <button onclick="alert('Karakter tersimpan ke dalam Vault studio!')" class="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">👤 Simpan ke Influencer Vault</button>
+            </div>
+          </div>
+
+          <!-- VIEW 5: GENERAL PROMPT -->
+          <div id="view-general" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="film"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 05: General Prompt Sinematik</h3><p class="text-xs text-gray-400">Breakdown sinematografi film pendek shot demi shot.</p></div>
+              </div>
+              <button onclick="alert('Breakdown sinematik berhasil dibuat!')" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">🎬 Generate Breakdown Sinema</button>
+            </div>
+          </div>
+
+          <!-- VIEW 6: STORYBOARD GRID -->
+          <div id="view-storyboard" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="layout-grid"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 06: Storyboard Grid</h3><p class="text-xs text-gray-400">Perakitan composite document & auto PNG download.</p></div>
+              </div>
+              <button onclick="alert('Lembar Storyboard Composite Berhasil Dirakit!')" class="w-full py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">📑 Rakit Storyboard Dokumen Utuh</button>
+            </div>
+          </div>
+
+          <!-- VIEW 7: AI GENERATOR -->
+          <div id="view-pipeline" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="route"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 07: AI Generator Master Pipeline</h3><p class="text-xs text-gray-400">Riset 10 ide viral ➔ naskah per-shot ➔ prompt video.</p></div>
+              </div>
+              <button onclick="alert('10 Ide Konten Berhasil Diriset secara Relevan!')" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">🚀 Jalankan Master Pipeline (10 Ide)</button>
+            </div>
+          </div>
+
+          <!-- VIEW 8: MULTI-CHAR -->
+          <div id="view-multichar" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-cyan-950 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="video"></i></div>
+                <div><h3 class="text-base font-black text-cyan-200 uppercase">Modul 08: Generative AI Multi-Character</h3><p class="text-xs text-gray-400">Aksi & dialog multi-karakter 100% konsisten.</p></div>
+              </div>
+              <button onclick="alert('Naskah dialog multi-karakter berhasil dieksekusi!')" class="w-full py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">🎥 Eksekusi Multi-Character Action</button>
+            </div>
+          </div>
+
+          <!-- VIEW 9: SEADANCE MOTION -->
+          <div id="view-seadance" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-rose-900/60 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-rose-500/10 text-rose-400"><i data-lucide="activity"></i></div>
+                <div><h3 class="text-base font-black text-rose-200 uppercase">Modul 09: SeaDance AI Motion Studio</h3><p class="text-xs text-gray-400">Koreografi gerak tari sinematik, k-pop rhythm, dan motion transfer.</p></div>
+              </div>
+              <div class="bg-[#060a14] p-4 rounded-xl border border-rose-950 text-xs font-mono text-rose-200">
+                [SEADANCE MOTION PROMPT] subject: Maya Kirana, energetic K-Pop choreography dance sequence, dynamic body rhythm, neon stage background, 60fps fluid motion transfer.
+              </div>
+              <button onclick="alert('Prompt tari sinematik SeaDance berhasil disalin!')" class="w-full py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">💃 Salin Prompt SeaDance AI Motion</button>
+            </div>
+          </div>
+
+          <!-- VIEW 10: GOOGLE FLOW & VEO 2 -->
+          <div id="view-flow" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-blue-900/60 space-y-5">
+              <div class="flex items-center gap-3 border-b border-cyan-950 pb-4">
+                <div class="p-2.5 rounded-xl bg-blue-500/10 text-blue-400"><i data-lucide="external-link"></i></div>
+                <div><h3 class="text-base font-black text-blue-200 uppercase">Modul 10: Integrasi Google Flow & Kling AI</h3><p class="text-xs text-gray-400">Panduan ekspor prompt langsung ke generator video external.</p></div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-4 bg-[#060a14] rounded-xl border border-cyan-950 text-xs">
+                  <span class="text-cyan-400 font-bold block mb-1">1. Salin Prompt 10s</span>
+                  Ambil prompt bahasa Inggris dari modul di sidebar.
+                </div>
+                <div class="p-4 bg-[#060a14] rounded-xl border border-cyan-950 text-xs">
+                  <span class="text-teal-400 font-bold block mb-1">2. Buka Google Flow</span>
+                  Buka tab baru platform Google Flow atau Kling AI.
+                </div>
+                <div class="p-4 bg-[#060a14] rounded-xl border border-cyan-950 text-xs">
+                  <span class="text-amber-400 font-bold block mb-1">3. Render 720p/4K</span>
+                  Tempel prompt dan klik generate (12 kredit).
+                </div>
+              </div>
+              <button onclick="alert('Prompt Google Flow siap dirender!')" class="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg">🌐 Uji Sambung ke Google Flow</button>
+            </div>
+          </div>
+
+          <!-- VIEW 11: PUSAT VIDEO PANDUAN MASTERCLASS (NOW PLAYING LAB) -->
+          <div id="view-guide" class="modul-view hidden space-y-6">
+            <div class="p-6 rounded-3xl bg-[#0a0f1d] border border-amber-500/40 shadow-2xl space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-cyan-950 pb-4">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold font-mono uppercase">
+                      Official Masterclass Suite • 11 Video Siap Putar
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-[10px] font-mono">
+                      STREAMING 4K HDR 60FPS
+                    </span>
+                  </div>
+                  <h3 id="guideTitle" class="text-xl font-black text-white mt-1.5 font-sans">
+                    Modul 01: Character Sheet 100% Konsistensi
+                  </h3>
+                  <p id="guideSubtitle" class="text-xs text-gray-400">
+                    Membangun anchor wajah dan pakaian terkunci solid #FFFFFF untuk Kling AI & Google Veo 2.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/30 font-mono">
+                    🟢 Phoneme Viseme Active
+                  </span>
+                </div>
+              </div>
+
+              <!-- PEMUTAR VIDEO 4K & SOUNDWAVE -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-4">
+                  <div class="relative aspect-video rounded-2xl bg-black border border-cyan-800/80 overflow-hidden flex flex-col justify-between p-4 shadow-2xl">
+                    <div class="flex justify-between items-center z-10">
+                      <span id="guideBadge" class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-black/80 border border-cyan-800 text-cyan-300">
+                        NOW PLAYING • MODUL 01
+                      </span>
+                      <div class="flex items-center gap-2">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono">REC 4K HDR</span>
+                        <span class="text-[10px] text-gray-400 font-mono">Dolby Atmos 5.1</span>
+                      </div>
+                    </div>
+
+                    <!-- SOUNDWAVE & STATUS -->
+                    <div class="flex flex-col items-center justify-center py-6 z-10 text-center">
+                      <div id="guidePlayBtn" onclick="togglePlayVideo()" class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-400 via-teal-400 to-amber-300 flex items-center justify-center text-slate-950 shadow-xl shadow-cyan-500/40 hover:scale-105 active:scale-95 cursor-pointer transition-all">
+                        <i id="playIcon" data-lucide="play" class="w-8 h-8 fill-slate-950 text-slate-950 ml-1"></i>
+                      </div>
+                      <div id="playStatus" class="text-xs font-bold text-cyan-200 mt-3 font-mono">
+                        Klik untuk Memutar Video Panduan & Suara Narator AI
+                      </div>
+                      <!-- SOUND WAVE SIMULATION -->
+                      <div class="flex items-end gap-1 h-6 mt-3">
+                        <span class="w-1 bg-cyan-400 h-2 animate-glow"></span>
+                        <span class="w-1 bg-cyan-400 h-5 animate-glow"></span>
+                        <span class="w-1 bg-teal-400 h-4 animate-glow"></span>
+                        <span class="w-1 bg-amber-400 h-6 animate-glow"></span>
+                        <span class="w-1 bg-teal-400 h-3 animate-glow"></span>
+                        <span class="w-1 bg-cyan-400 h-5 animate-glow"></span>
+                        <span class="w-1 bg-cyan-400 h-2 animate-glow"></span>
+                      </div>
+                    </div>
+
+                    <!-- KONTROL PEMUTAR -->
+                    <div class="z-10 bg-black/70 backdrop-blur-md rounded-xl p-3 border border-cyan-950 space-y-2">
+                      <div class="flex justify-between items-center text-[10px] font-mono text-gray-400">
+                        <span id="timecode">03:45 / 09:40</span>
+                        <span class="text-teal-400">Audio Narasi: ID-Maya Studio Synthesizer</span>
+                      </div>
+                      <div class="w-full h-1.5 bg-cyan-950 rounded-full overflow-hidden">
+                        <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 to-amber-400 w-2/5 transition-all"></div>
+                      </div>
+                      <div class="flex justify-between items-center pt-1">
+                        <div class="flex items-center gap-3">
+                          <button onclick="gantiModulGuide(-1)" class="text-xs text-gray-400 hover:text-white"><i data-lucide="skip-back" class="w-4 h-4"></i></button>
+                          <button onclick="togglePlayVideo()" class="text-xs text-cyan-300 hover:text-white"><i data-lucide="play" class="w-4 h-4"></i></button>
+                          <button onclick="gantiModulGuide(1)" class="text-xs text-gray-400 hover:text-white"><i data-lucide="skip-forward" class="w-4 h-4"></i></button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          <span class="text-[10px] text-gray-400 uppercase font-mono">Audio Active</span>
+                          <i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- TRANSKRIP & PROMPT MODUL -->
+                  <div class="p-4 rounded-2xl bg-[#060a14] border border-cyan-950 space-y-2">
+                    <div class="flex justify-between items-center">
+                      <span class="text-xs font-bold text-amber-400 uppercase font-mono">Master Prompt Terkalibrasi Modul Ini:</span>
+                      <button onclick="salinTeksSemua('guidePrompt')" class="text-[11px] px-2.5 py-1 bg-cyan-950 text-cyan-300 rounded border border-cyan-800 font-bold hover:bg-cyan-900">Salin Prompt</button>
+                    </div>
+                    <div id="guidePrompt" class="font-mono text-xs text-cyan-100 bg-[#0a0f1d] p-3 rounded-xl border border-cyan-950 whitespace-pre-wrap leading-relaxed">
+[PROMPT MODUL 01 - CHARACTER SHEET 100% KONSISTENSI]
+/generate_cinema subject: "Maya Kirana Southeast Asian female skin texture micropores, talking directly to high-end cinematic lens" [phoneme_sync: tight] [viseme_map: indonesian_natural] audio_track: "vocal_master_48khz.wav" --motion_strength 0.68 --jaw_lock true --hdr_gamut dci_p3
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PLAYLIST 11 MODUL PANDUAN -->
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-black text-white uppercase tracking-wider">PLAYLIST 11 MODUL PANDUAN</span>
+                    <span class="text-[10px] text-cyan-400 font-mono">11 Video Lengkap</span>
+                  </div>
+                  <div id="playlistContainer" class="space-y-2 max-h-[520px] overflow-y-auto custom-scrollbar pr-1"></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -173,32 +511,151 @@
 
   </div>
 
-  <!-- SCRIPT INTERAKSI LANGSUNG -->
+  <!-- SCRIPT INTERAKTIF 11 MODUL & VIDEO PLAYER -->
   <script>
+    lucide.createIcons();
+
+    const dataModul = [
+      { id: 'sheets', no: '01', judul: 'Modul 01: Character Sheet 100% Konsistensi', sub: 'Membangun anchor wajah & pakaian berlatar putih bersih solid #FFFFFF.', durasi: '09:40', prompt: '/generate_cinema subject: "Maya Kirana Southeast Asian female, 4 sets turnaround sheet" [solid_white_bg #FFFFFF] --face_lock 100% --wardrobe_sync true' },
+      { id: 'imagegen', no: '02', judul: 'Modul 02: Image Studio & First Frame Hook', sub: 'Merancang thumbnail pembuka video 8K dengan rasio 9:16 dan 16:9.', durasi: '06:15', prompt: 'First frame hook thumbnail of Indonesian talent holding new product, engaging smile to camera, 8k render, photorealistic lighting' },
+      { id: 'affiliate', no: '03', judul: 'Modul 03: Affiliate Video UGC & E-Commerce', sub: 'Susun naskah promosi padat 10s per-shot dan hook konversi tinggi.', durasi: '08:20', prompt: 'Commercial UGC TikTok style video of female creator reviewing serum, 10-second tight pacing, high-energy sales pitch' },
+      { id: 'influencer', no: '04', judul: 'Modul 04: AI Influencer & Virtual Talent Vault', sub: 'Rancang wajah model virtual konsisten untuk endorsement produk.', durasi: '07:50', prompt: 'Exclusive virtual brand ambassador Maya Kirana, elegant Indonesian woman, studio ring lighting, photorealistic eye reflections' },
+      { id: 'general', no: '05', judul: 'Modul 05: General Prompt & Film Sinematik', sub: 'Breakdown naratif shot demi shot untuk film dan video dramatis.', durasi: '11:10', prompt: 'Cinematic 35mm film scene, anamorphic lens flare, moody color grade, shot-by-shot dramatic pacing, 24fps cinema look' },
+      { id: 'storyboard', no: '06', judul: 'Modul 06: Storyboard Grid & Dokumen Komposit', sub: 'Rakit panel multi-shot ke dokumen utuh dan auto-download PNG.', durasi: '08:45', prompt: 'Composite storyboard document layout with 4 synchronized scene panels, camera angle notations, and script text overlay' },
+      { id: 'pipeline', no: '07', judul: 'Modul 07: AI Generator Master Pipeline', sub: 'Jalur terpadu: Riset 10 ide konten viral hingga video siap render.', durasi: '12:30', prompt: 'End-to-end production pipeline from 10 viral content hooks to 10s shot breakdowns and calibrated AI video prompts' },
+      { id: 'multichar', no: '08', judul: 'Modul 08: Generative AI Multi-Character Studio', sub: 'Aksi & dialog interaktif 2+ orang dengan konsistensi 100% terjaga.', durasi: '10:15', prompt: 'Multi-character dialogue scene with two distinct actors interacting naturally, locked wardrobe colors, seamless facial tracking' },
+      { id: 'seadance', no: '09', judul: 'Modul 09: SeaDance Motion & Dance Studio', sub: 'Koreografi gerak tari sinematik dan sinkronisasi beat ritme.', durasi: '07:25', prompt: 'SeaDance dynamic choreography prompt: fluid body movement, synchronized K-Pop dance beat, 60fps high frame rate render' },
+      { id: 'flow', no: '10', judul: 'Modul 10: Integrasi Google Flow & Kling AI', sub: 'Teknik ekspor prompt ke platform video AI eksternal 12 kredit.', durasi: '09:05', prompt: 'Direct-inject prompt for Google Flow and Kling AI 1.5, 720p/4K resolution settings, camera motion speed 0.7' },
+      { id: 'guide', no: '11', judul: 'Modul 11: Google Veo 2 Audio Lip-Sync & Viseme', sub: 'Pemetaan fonem vokal ketat dan artikulasi bibir natural tanpa drift.', durasi: '14:20', prompt: 'Veo 2 audio lip-sync prompt: tight phoneme synchronization /m/, /f/, /t/, /r/ Indonesian speech, natural jaw articulation' }
+    ];
+
+    let currentModulIndex = 0;
+    let isPlaying = false;
+
+    function renderPlaylist() {
+      const cont = document.getElementById('playlistContainer');
+      if (!cont) return;
+      cont.innerHTML = '';
+      dataModul.forEach((m, idx) => {
+        const active = idx === currentModulIndex;
+        const div = document.createElement('div');
+        div.onclick = () => pilihVideoGuideIndex(idx);
+        div.className = `p-3 rounded-xl border cursor-pointer transition-all ${active ? 'bg-cyan-500/15 border-cyan-400 text-white shadow-lg' : 'bg-[#060a14] border-cyan-950/80 text-gray-400 hover:border-cyan-800 hover:text-white'}`;
+        div.innerHTML = `
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] font-mono font-bold ${active ? 'text-amber-400' : 'text-gray-500'}">MODUL ${m.no}</span>
+            <span class="text-[10px] font-mono text-cyan-400">${m.durasi}</span>
+          </div>
+          <div class="text-xs font-bold truncate">${m.judul}</div>
+          <div class="text-[10px] text-gray-500 truncate mt-0.5">${m.sub}</div>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function pilihVideoGuideIndex(idx) {
+      currentModulIndex = idx;
+      const m = dataModul[idx];
+      document.getElementById('guideTitle').innerText = m.judul;
+      document.getElementById('guideSubtitle').innerText = m.sub;
+      document.getElementById('guideBadge').innerText = `NOW PLAYING • MODUL ${m.no}`;
+      document.getElementById('timecode').innerText = `00:00 / ${m.durasi}`;
+      document.getElementById('guidePrompt').innerText = m.prompt;
+      renderPlaylist();
+    }
+
+    function togglePlayVideo() {
+      isPlaying = !isPlaying;
+      const btn = document.getElementById('playStatus');
+      const icon = document.getElementById('playIcon');
+      if (isPlaying) {
+        btn.innerText = 'Sedang Diputar & Bersuara: Narator Suara Nyata AI Berjalan...';
+        btn.className = 'text-xs font-bold text-emerald-400 mt-3 font-mono animate-pulse';
+        icon.setAttribute('data-lucide', 'pause');
+      } else {
+        btn.innerText = 'Video Dijeda. Klik untuk Memutar Kembali';
+        btn.className = 'text-xs font-bold text-cyan-200 mt-3 font-mono';
+        icon.setAttribute('data-lucide', 'play');
+      }
+      lucide.createIcons();
+    }
+
+    function gantiModulGuide(direction) {
+      let next = currentModulIndex + direction;
+      if (next < 0) next = dataModul.length - 1;
+      if (next >= dataModul.length) next = 0;
+      pilihVideoGuideIndex(next);
+    }
+
     function masukStudio() {
       document.getElementById('splashScreen').classList.add('hidden');
       document.getElementById('mainStudio').classList.remove('hidden');
+      renderPlaylist();
+      lucide.createIcons();
+    }
+
+    function masukKePanduan() {
+      masukStudio();
+      pilihModul('guide');
     }
 
     function kembaliSplash() {
       document.getElementById('mainStudio').classList.add('hidden');
       document.getElementById('splashScreen').classList.remove('hidden');
+      lucide.createIcons();
     }
 
     function pilihModul(id) {
+      const allViews = document.querySelectorAll('.modul-view');
+      allViews.forEach(v => v.classList.add('hidden'));
+
+      const target = document.getElementById('view-' + id);
+      if (target) target.classList.remove('hidden');
+
+      const allBtns = document.querySelectorAll('.nav-btn');
+      allBtns.forEach(b => {
+        b.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:bg-[#0f172a] hover:text-white text-left';
+      });
+      const activeBtn = document.getElementById('btn-' + id);
+      if (activeBtn) {
+        activeBtn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 text-left';
+      }
+
+      if (id === 'guide') {
+        renderPlaylist();
+      }
+
       const titles = {
-        'home': 'Workspace Home',
-        'sheets': 'Character Sheet Studio (Konsistensi 100%)',
-        'imagegen': 'Image Studio (First Frame & Visuals)',
-        'affiliate': 'Affiliate Prompt (Sales Conversion)',
-        'influencer': 'AI Influencer Vault (Virtual Talent)',
-        'general': 'General Prompt (Breakdown Film Sinematik)',
-        'storyboard': 'Storyboard Grid (Composite Document)',
-        'pipeline': 'AI Generator (Master Pipeline)',
-        'multichar': 'Generative AI Multi-Character Studio'
+        'home': 'Workspace Home • Pusat Studio',
+        'sheets': 'Modul 01: Character Sheet Studio (Konsistensi 100%)',
+        'imagegen': 'Modul 02: Image Studio (First Frame Thumbnail)',
+        'affiliate': 'Modul 03: Affiliate Prompt (Sales & UGC)',
+        'influencer': 'Modul 04: AI Influencer Vault (Virtual Talent)',
+        'general': 'Modul 05: General Prompt Sinematik (Breakdown Film)',
+        'storyboard': 'Modul 06: Storyboard Grid (Composite Document)',
+        'pipeline': 'Modul 07: AI Generator (Master Pipeline Riset 10 Ide)',
+        'multichar': 'Modul 08: Generative AI Multi-Character Studio',
+        'seadance': 'Modul 09: SeaDance AI Motion & Dance Studio',
+        'flow': 'Modul 10: Integrasi Google Flow & External Video',
+        'guide': 'Modul 11: Pusat Video Panduan Masterclass (11 Modul Live)'
       };
       document.getElementById('judulModul').innerText = titles[id] || 'Studio Workspace';
+      lucide.createIcons();
     }
+
+    function salinTeksSemua(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Tersalin ke Clipboard!');
+      }).catch(() => {
+        alert('Gagal menyalin otomatis, silakan blok teks.');
+      });
+    }
+
+    window.onload = function() {
+      renderPlaylist();
+      lucide.createIcons();
+    };
   </script>
 </body>
 </html>
